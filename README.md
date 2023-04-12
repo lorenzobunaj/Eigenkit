@@ -1,4 +1,4 @@
-### Eigenkit
+# Eigenkit
 
 ## Overview
 Eigenkit is a linear algebra library for C++ programming language.
