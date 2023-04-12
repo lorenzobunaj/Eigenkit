@@ -19,3 +19,5 @@ So, if you want to use it, you can simply download the source code containing th
 ## Documentation
 
 ## Perspectives for the Future
+
+## Authors and Contributors
