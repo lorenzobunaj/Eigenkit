@@ -12,8 +12,10 @@ So, if you want to use it, you can simply download the source code containing th
 
 ## Contribute
 
-## Eigenkit Structure
+## Project Structure
 
 ## Example
 
 ## Documentation
+
+## Perspectives for the future
