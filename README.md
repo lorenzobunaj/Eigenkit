@@ -9,3 +9,11 @@ This library it's still under development, but it's already possible to observe 
 
 Eigenkit is compatible with any compiler and doesn't have any dependencies other than the C++ standard library.
 So, if you want to use it, you can simply download the source code containing the header files (since they are the only files needed to compile the library) and add them to your project.
+
+## Contribute
+
+## Eigenkit Structure
+
+## Example
+
+## Documentation
