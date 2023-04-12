@@ -2,6 +2,8 @@
 #include <complex>
 #include <typeinfo>
 #include <algorithm>
+#include <iterator>
+#include <cstddef>
 #include <iostream>
 
 namespace ek
@@ -30,6 +32,10 @@ namespace ek
         bool dcols();
         T& operator () (size_t, size_t);
         void newSize(size_t, size_t);
+
+        struct Iterator;
+        Iterator begin() { return Iterator(&(this->matrix[0][0]), &matrix); }
+        Iterator end()   { return Iterator(&(this->matrix[(*this).rows()-1][(*this).cols()]), &matrix); }
         void reshape(size_t);
         Matrix<T, DR, DC> sub(size_t, size_t, size_t, size_t);
     };

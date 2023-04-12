@@ -7,19 +7,14 @@ namespace ek
             throw std::invalid_argument("Invalid Argument");
         }
 
-        std::vector<T> mtx;
-        mtx.resize((*this).rows()*(*this).cols());
-        for (size_t i=0; i<(*this).rows(); i++) {
-            for (size_t j=0; j<(*this).cols(); j++) {
-                mtx[i*(*this).cols() + j] = (*this)(i,j);
-            }
-        }
+        Matrix<T, DR, DC> mtx = *this;
 
         (*this).newSize(r, (*this).rows()*(*this).cols() / r);
 
+        auto it = mtx.begin();
         for (size_t i=0; i<(*this).rows(); i++) {
             for (size_t j=0; j<(*this).cols(); j++) {
-                (*this)(i,j) = mtx[i*(*this).cols() + j];
+                (*this)(i,j) = *(it++);
             }
         }
     }

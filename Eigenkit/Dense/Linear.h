@@ -1,0 +1,6 @@
+#ifndef LINEAR_H_INCLUDED
+#define LINEAR_H_INCLUDED
+
+
+
+#endif // LINEAR_H_INCLUDED

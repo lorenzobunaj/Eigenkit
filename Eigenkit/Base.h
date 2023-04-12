@@ -1,5 +1,6 @@
 #include "src/Base/Base/Matrix.h"
 #include "src/Base/Base/Constructors.h"
+#include "src/Base/Utils/Iterator.h"
 #include "src/Base/Base/BaseFunctions.h"
 #include "src/Base/Types/Vector.h"
 #include "src/Base/Types/Squared.h"
