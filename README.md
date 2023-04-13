@@ -1,7 +1,7 @@
 # Eigenkit C++ Library
 
 <div>
-  <img src="https://github.com/lorenzobunaj/eigenkit/blob/main/eigenkit-logo.svg" width="120"/>
+  <img src="https://github.com/lorenzobunaj/eigenkit/blob/main/eigenkit-logo.svg" width="150"/>
 </div>
 
 Eigenkit is a linear algebra library for C++ programming language.  
