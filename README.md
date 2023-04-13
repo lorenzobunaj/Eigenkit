@@ -5,7 +5,7 @@ This library it's still under development, but it's already possible to observe 
 
 ## Features
 
-- Supports many standard C++ numerics library functions and types, like <div><p style="color: blue;">complex</p></div>.
+- Supports many standard [C++ Numerics library](https://en.cppreference.com/w/cpp/numeric) functions and types, like [complex](https://en.cppreference.com/w/cpp/numeric/complex).
 - Compatible with any compiler.
 - Easily extensible.
 - Open source
