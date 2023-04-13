@@ -51,8 +51,6 @@ Output:
 The basic class provided by Eigenkit library is the Matrix class, whose instances retain the properties of dense matrices.  
 In the code above, we are initializing a 2x2 matrix whose elements are integers, assigning the value 1 to the element in position (0,0) and showing on terminal the matrix element in position (0,0), which we expect to be 1. 
 
-## Perspectives
-
 ## Contribute
 
 If you want to contribute, just do as follows:
