@@ -5,15 +5,15 @@ This library it's still under development, but it's already possible to observe 
 
 ## Features
 
-- Supports many standard [C++ Numerics library](https://en.cppreference.com/w/cpp/numeric) functions and types, like [complex](https://en.cppreference.com/w/cpp/numeric/complex).
+- Supports many [C++ Standard Numerics Library](https://en.cppreference.com/w/cpp/numeric) functions and types, like [complex](https://en.cppreference.com/w/cpp/numeric/complex).
 - Compatible with any compiler.
 - Easily extensible.
 - Open source
 
 ## Requirements and Download
 
-Eigenkit is compatible with any compiler and doesn't have any dependencies other than the C++ standard library.  
-So, if you want to use it, you can simply download the source code containing the header files (since they are the only files needed to compile the library) and add them to your project.
+Eigenkit is compatible with any compiler and doesn't have any dependencies other than the [C++ Standard Library](https://en.cppreference.com/w/cpp/standard_library).  
+So, if you want to use it, you can [download](https://eigenkit.org/docs/getting-started/download.html) the Eigenkit source's latest release and extract it. Once you've done that, you'll simply add the source code containing the header files to your project.
 
 ## Contribute
 
