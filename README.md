@@ -17,6 +17,13 @@ So, if you want to use it, you can [download](https://eigenkit.org/docs/getting-
 
 ## Contribute
 
+If you want to contribute, just do as follows:
+1. Fork the Project
+2. Create a new Feature Branch: `git checkout -b feature/YourFeature`
+3. Commit the Changes: `git commit -m 'YourFeature main points'`
+4. Push to the Branch `git push origin feature/AmazingFeature`
+5. Open a Pull Request (discuss it)
+
 ## Project Structure
 
 ## Example
