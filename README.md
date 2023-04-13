@@ -31,7 +31,7 @@ If you want to contribute, just do as follows:
 1. Fork the Project
 2. Create a new Feature Branch: `git checkout -b feature/YourFeature`
 3. Commit the Changes: `git commit -m 'YourFeature main points'`
-4. Push to the Branch `git push origin feature/AmazingFeature`
+4. Push to the Branch `git push origin feature/YourFeature`
 5. Open a Pull Request (discuss it)
 
 ## Authors and Contributors
