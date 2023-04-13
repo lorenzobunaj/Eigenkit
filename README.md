@@ -29,3 +29,5 @@ If you want to contribute, just do as follows:
 5. Open a Pull Request (discuss it)
 
 ## Authors and Contributors
+
+This project is being developed by Lorenzo Bunaj
