@@ -1,6 +1,5 @@
 # Eigenkit
 
-![eigenkit](https://github.com/lorenzobunaj/eigenkit/blob/main/eigenkit.svg =100x100)
 <img src="https://github.com/lorenzobunaj/eigenkit/blob/main/eigenkit.svg" width="200"/>
 
 Eigenkit is a linear algebra library for C++ programming language.
