@@ -1,6 +1,6 @@
 # Eigenkit C++ Library
 
-<div align="center">
+<div>
   <img src="https://github.com/lorenzobunaj/eigenkit/blob/main/eigenkit-github.svg" width="300"/>
 </div>
 
