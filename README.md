@@ -53,7 +53,7 @@ In the code above, we are initializing a 2x2 matrix whose elements are integers,
 
 ## Contribute
 
-If you want to contribute, just do as follows:
+To contribute, just do as follows:
 1. Fork the Project
 2. Create a new Feature Branch: `git checkout -b feature/YourFeature`
 3. Commit the Changes: `git commit -m 'YourFeature main points'`
