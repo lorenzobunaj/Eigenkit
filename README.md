@@ -22,7 +22,7 @@ So, if you want to use it, you can [download](https://eigenkit.org/docs/getting-
 ## Documentation
 
 - [Getting Started](https://eigenkit.org/docs/getting-started/)
-- [Dense Matrix Class](https://eigenkit.org/docs/dense-matrix-class/)
+- [Matrix Class](https://eigenkit.org/docs/matrix-class/)
 - [Dense Algebra](https://eigenkit.org/docs/dense-algebra/)
 - [Dense Decompositions](https://eigenkit.org/docs/dense-decompositions/)
 - [Dense Linear Algebra](https://eigenkit.org/docs/dense-linear-algebra/)
