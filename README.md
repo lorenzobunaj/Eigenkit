@@ -1,5 +1,7 @@
 # Eigenkit
 
+![eigenkit-logo](https://lorenzobunajbucket.s3.amazonaws.com/eigenkit.svg)
+
 ## Overview
 
 Eigenkit is a linear algebra library for C++ programming language.
