@@ -21,7 +21,35 @@ So, if you want to use it, you can [download](https://eigenkit.org/docs/getting-
 
 ## Documentation
 
+- [Getting Started](https://eigenkit.org/docs/getting-started/)
+- [Dense Matrix Class](https://eigenkit.org/docs/dense-matrix-class/)
+- [Dense Algebra](https://eigenkit.org/docs/dense-algebra/)
+- [Dense Decompositions](https://eigenkit.org/docs/dense-decompositions/)
+- [Dense Linear Algebra](https://eigenkit.org/docs/dense-linear-algebra/)
+- [Quaternion Class](https://eigenkit.org/docs/quaternion-class/)
+
 ## Example of Usage
+
+```cpp
+#include <iostream>
+#include <Eigenkit/Eigenkit.h>
+                        
+int main()
+{
+    ek::Matrix<int> mtx(2,2);
+    mtx(0,0) = 1;
+    std::cout << mtx(0,0);
+}
+```
+
+Output:
+
+```cpp
+1
+```
+
+The basic class provided by Eigenkit library is the Matrix class, whose instances retain the properties of dense matrices.  
+In the code above, we are initializing a 2x2 matrix whose elements are integers, assigning the value 1 to the element in position (0,0) and showing on terminal the matrix element in position (0,0), which we expect to be 1. 
 
 ## Perspectives
 
