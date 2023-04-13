@@ -1,6 +1,6 @@
 # Eigenkit
 
-![eigenkit-logo](s3://lorenzobunajbucket/eigenkit.svg)
+![eigenkit-logo](https://s3.amazonaws.com/lorenzobunajbucket/eigenkit.svg)
 
 ## Overview
 
