@@ -15,6 +15,10 @@ This library it's still under development, but it's already possible to observe 
 Eigenkit is compatible with any compiler and doesn't have any dependencies other than the [C++ Standard Library](https://en.cppreference.com/w/cpp/standard_library).  
 So, if you want to use it, you can [download](https://eigenkit.org/docs/getting-started/download.html) the Eigenkit source's latest version and extract it. Once you've done that, you'll simply add the source code containing the header files to your project.
 
+## Eigenkit v1.0 Structure
+
+## Perspectives for the Future
+
 ## Contribute
 
 If you want to contribute, just do as follows:
@@ -23,13 +27,5 @@ If you want to contribute, just do as follows:
 3. Commit the Changes: `git commit -m 'YourFeature main points'`
 4. Push to the Branch `git push origin feature/AmazingFeature`
 5. Open a Pull Request (discuss it)
-
-## Project Structure
-
-## Example
-
-## Documentation
-
-## Perspectives for the Future
 
 ## Authors and Contributors
