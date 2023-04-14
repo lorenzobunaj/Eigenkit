@@ -1,7 +1,7 @@
 # Eigenkit C++ Library
 
-<div>
-  <img src="https://github.com/lorenzobunaj/eigenkit/blob/main/eigenkit-logo.svg" width="150"/>
+<div align="center">
+  <img src="https://github.com/lorenzobunaj/eigenkit/blob/main/eigenkit-logo.svg" width="200"/>
 </div>
 </br>
 
