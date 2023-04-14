@@ -3,29 +3,29 @@ namespace ek
     template <typename T, bool DR, bool DC>
     bool Matrix<T, DR, DC>::drows()
     {
-        return this->dr;
+        return dr;
     }
     template <typename T, bool DR, bool DC>
     bool Matrix<T, DR, DC>::dcols()
     {
-        return this->dc;
+        return dc;
     }
     template <typename T, bool DR, bool DC>
     void Matrix<T, DR, DC>::setDynamic(bool drows, bool dcols)
     {
-        this->dr = drows;
-        this->dc = dcols;
+        dr = drows;
+        dc = dcols;
     }
 
     template <typename T, bool DR, bool DC>
     size_t Matrix<T, DR, DC>::rows()
     {
-        return this->nr;
+        return nr;
     }
     template <typename T, bool DR, bool DC>
     size_t Matrix<T, DR, DC>::cols()
     {
-        return this->nc;
+        return nc;
     }
     template <typename T, bool DR, bool DC>
     void Matrix<T, DR, DC>::newSize(size_t r, size_t c)
@@ -39,8 +39,8 @@ namespace ek
             else {throw std::invalid_argument("Invalid Argument");}
         }
 
-        (this->matrix).resize(nr);
-        for (auto r=matrix.begin(); r != (this->matrix).end(); r++) {
+        matrix.resize(nr);
+        for (auto r=matrix.begin(); r != matrix.end(); r++) {
             (*r).resize(nc);
         }
     }
@@ -55,6 +55,6 @@ namespace ek
         if (!((*this).rows() > ir)) {(*this).newSize(ir, (*this).cols());}
         if (!((*this).cols() > ic)) {(*this).newSize((*this).rows(), ic);}
 
-        return this->matrix[ir][ic];
+        return matrix[ir][ic];
     }
 }

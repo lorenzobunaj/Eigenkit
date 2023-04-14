@@ -2,6 +2,14 @@ namespace ek {
     template <typename T, bool D=1>
     class Squared : public Matrix<T,D,D>
     {
+    private:
+        void squaredCheck(Matrix<T,D,D> mtx)
+        {
+            if (mtx.rows() != mtx.cols()) {
+                throw std::invalid_argument("Invalid Argument");
+            }
+        }
+
     public:
         Squared() : Matrix<T,D,D>(){};
         Squared(size_t r, size_t c) : Matrix<T,D,D>(r, c)
@@ -17,16 +25,16 @@ namespace ek {
             squaredCheck(*this);
         };
 
-        void newSize(size_t s)
+        size_t dim()
         {
-            Matrix<T,D,D>::newSize(s, s);
+            return (*this).rows();
         }
 
-        void squaredCheck(Matrix<T,D,D> mtx)
+        void newSize(size_t s)
         {
-            if (mtx.rows() != mtx.cols()) {
-                throw std::invalid_argument("Invalid Argument");
-            }
-        }
+            Matrix<T, D, D>::newSize(s, s);
+        };
+
+        static Matrix<T, D, D> matrix (Squared<T, D>);
     };
 }

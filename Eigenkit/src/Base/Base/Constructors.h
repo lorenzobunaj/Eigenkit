@@ -24,7 +24,7 @@ namespace ek
     {
         for (auto r = arr.begin(); r != arr.end(); r++) {
             if ((*r).size() != (*(arr.begin())).size()) {
-                throw std::invalid_argument("Invalid Argument");
+                throw std::invalid_argument("Invalid Array");
             }
         }
 
@@ -42,7 +42,7 @@ namespace ek
     {
         for (auto r=arr.begin(); r != arr.end(); r++) {
             if ((*r).size() != (*(arr.begin())).size()) {
-                throw std::invalid_argument("Invalid Argument");
+                throw std::invalid_argument("Invalid Array");
             }
         }
 

@@ -1,6 +1,3 @@
-#ifndef ALGEBRA_H_INCLUDED
-#define ALGEBRA_H_INCLUDED
-
-
-
-#endif // ALGEBRA_H_INCLUDED
+#include "../src/Dense/Algebra/Conversion.h"
+#include "../src/Dense/Algebra/Arithmetic.h"
+#include "../src/Dense/Algebra/Assignment.h"

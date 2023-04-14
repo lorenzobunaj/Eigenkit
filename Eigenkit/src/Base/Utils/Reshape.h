@@ -12,10 +12,8 @@ namespace ek
         (*this).newSize(r, (*this).rows()*(*this).cols() / r);
 
         auto it = mtx.begin();
-        for (size_t i=0; i<(*this).rows(); i++) {
-            for (size_t j=0; j<(*this).cols(); j++) {
-                (*this)(i,j) = *(it++);
-            }
+        for (auto e = (*this).begin(); e != (*this).end(); e++) {
+            *e = *(it++);
         }
     }
 }

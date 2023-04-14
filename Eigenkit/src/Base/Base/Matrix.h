@@ -38,5 +38,7 @@ namespace ek
         Iterator end()   { return Iterator(&(this->matrix[(*this).rows()-1][(*this).cols()]), &matrix); }
         void reshape(size_t);
         Matrix<T, DR, DC> sub(size_t, size_t, size_t, size_t);
+
+        Matrix<T, DR, DC> operator + (Matrix<T, DR, DC>);
     };
 }
