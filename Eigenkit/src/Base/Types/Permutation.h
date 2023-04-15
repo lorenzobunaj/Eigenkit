@@ -46,7 +46,7 @@ namespace ek {
             throw std::invalid_argument("Invalid Method");
         };
 
-        int& operator () (size_t ir, size_t ic)
+        int operator () (size_t ir, size_t ic)
         {
             if (ir >= (*this).rows() || ic >= (*this).cols()) {
                 throw std::invalid_argument("Invalid Index");
