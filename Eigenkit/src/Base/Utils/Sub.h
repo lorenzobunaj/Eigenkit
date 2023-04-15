@@ -1,5 +1,6 @@
 namespace ek
 {
+
     template <typename T, bool DR, bool DC>
     Matrix<T, DR, DC> Matrix<T, DR, DC>::sub(size_t ir, size_t ic, size_t fr, size_t fc)
     {

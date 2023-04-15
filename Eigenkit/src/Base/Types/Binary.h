@@ -3,7 +3,16 @@ namespace ek {
     class Binary : public Matrix<int,DR,DC>
     {
     private:
-        std::vector<std::vector<int>> App (int (*f)(int p), size_t rs, size_t cs)
+        void binaryCheck(Matrix<int,DR,DC> mtx)
+        {
+            for (auto it : mtx)
+            {
+                if (it != 0 && it != 1) {
+                    throw std::invalid_argument("Invalid Argument");
+                }
+            }
+        }
+        std::vector<std::vector<int>> app (int (*f)(int p), size_t rs, size_t cs)
         {
             std::vector<std::vector<int>> arr;
 
@@ -23,7 +32,17 @@ namespace ek {
         }
 
     public:
-        Binary(int (*f)(int p), size_t rs, size_t cs) : Matrix<int,DR,DC>(App((*f), rs, cs)){};
+        Binary() : Matrix<int,DR,DC>(){};
+
+        Binary(size_t r, size_t c) : Matrix<int,DR,DC>(r, c){};
+
+        Binary(std::initializer_list<std::initializer_list<int>> arr)
+        : Matrix<int,DR,DC>(arr){binaryCheck(*this);};
+
+        Binary(std::vector<std::vector<int>> arr)
+        : Matrix<int,DR,DC>(arr){binaryCheck(*this);};
+
+        Binary(int (*f)(int p), size_t rs, size_t cs) : Matrix<int,DR,DC>(app((*f), rs, cs)){};
 
         static Matrix<int, DR, DC> matrix (Binary<DR, DC>);
 

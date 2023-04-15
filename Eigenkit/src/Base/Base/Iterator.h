@@ -32,7 +32,7 @@ namespace ek
             return *this;
         }
 
-        Iterator operator ++ (T)
+        Iterator operator ++ (int)
         {
             Iterator tmp = *this;
             ++(*this);

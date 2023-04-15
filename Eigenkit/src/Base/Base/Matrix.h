@@ -31,8 +31,8 @@ namespace ek
         bool drows();
         bool dcols();
         struct Iterator;
-        Iterator begin() { return Iterator(&(this->matrix[0][0]), &matrix); }
-        Iterator end()   { return Iterator(&(this->matrix[(*this).rows()-1][(*this).cols()]), &matrix); }
+        Iterator begin() { return Iterator(&(matrix[0][0]), &matrix); }
+        Iterator end()   { return Iterator(&(matrix[(*this).rows()-1][(*this).cols()]), &matrix); }
 
         void newSize(size_t, size_t);
         T& operator () (size_t, size_t);

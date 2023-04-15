@@ -10,20 +10,23 @@ namespace ek {
             }
         }
 
+    protected:
+        std::vector<std::vector<T>> getMatrix()
+        {
+            return Matrix<T,D,D>::matrix;
+        }
+
     public:
         Squared() : Matrix<T,D,D>(){};
-        Squared(size_t r, size_t c) : Matrix<T,D,D>(r, c)
-        {
-            squaredCheck(*this);
-        };
-        Squared(std::initializer_list<std::initializer_list<T>> arr) : Matrix<T,D,D>(arr)
-        {
-            squaredCheck(*this);
-        };
-        Squared(std::vector<std::vector<T>> arr) : Matrix<T,D,D>(arr)
-        {
-            squaredCheck(*this);
-        };
+
+        Squared(size_t r, size_t c)
+        : Matrix<T,D,D>(r, c){squaredCheck(*this);};
+
+        Squared(std::initializer_list<std::initializer_list<T>> arr)
+        : Matrix<T,D,D>(arr){squaredCheck(*this);};
+
+        Squared(std::vector<std::vector<T>> arr)
+        : Matrix<T,D,D>(arr){squaredCheck(*this);};
 
         size_t dim()
         {

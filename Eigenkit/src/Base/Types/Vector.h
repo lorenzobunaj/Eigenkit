@@ -12,7 +12,7 @@ namespace ek {
 
         void newSize(size_t s)
         {
-            if (this->row) {
+            if (row) {
                 Matrix<T,0,D>::newSize(1, s);
             } else {
                 Matrix<T,0,D>::newSize(s, 1);
@@ -21,7 +21,7 @@ namespace ek {
 
         T& operator () (size_t i)
         {
-            if (this->row) {
+            if (row) {
                 return Matrix<T,0,D>(0,i);
             } else {
                 return Matrix<T,0,D>(i,0);

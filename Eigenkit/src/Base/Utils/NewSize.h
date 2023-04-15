@@ -13,7 +13,7 @@ namespace ek
         }
 
         matrix.resize(nr);
-        for (auto r=matrix.begin(); r != matrix.end(); r++) {
+        for (auto r = matrix.begin(); r != matrix.end(); r++) {
             (*r).resize(nc);
         }
     }
@@ -21,12 +21,8 @@ namespace ek
     template <typename T, bool DR, bool DC>
     T& Matrix<T, DR, DC>::operator () (size_t ir, size_t ic)
     {
-        if (!(((*this).rows() > ir) && ((*this).cols() > ic))) {
-            throw std::invalid_argument("Invalid Index");
-        }
-
-        if (!((*this).rows() > ir)) {(*this).newSize(ir, (*this).cols());}
-        if (!((*this).cols() > ic)) {(*this).newSize((*this).rows(), ic);}
+        if (ir >= (*this).rows()) {(*this).newSize(ir+1, (*this).cols());}
+        if (ic >= (*this).cols()) {(*this).newSize((*this).rows(), ic+1);}
 
         return matrix[ir][ic];
     }

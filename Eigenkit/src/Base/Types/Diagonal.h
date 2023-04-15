@@ -29,9 +29,10 @@ namespace ek {
 
     public:
         Diagonal() : Squared<T,D>(){};
-        Diagonal(std::initializer_list<std::initializer_list<T>> arr) : Squared<T,D>(arr){
-            diagonalCheck(*this);
-        };
+
+        Diagonal(std::initializer_list<std::initializer_list<T>> arr)
+        : Squared<T,D>(arr){diagonalCheck(*this);};
+
         Diagonal(std::vector<T> arr) : Squared<T,D>(diagonalize(arr)) {};
     };
 }

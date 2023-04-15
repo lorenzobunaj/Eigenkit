@@ -40,5 +40,19 @@ namespace ek {
         Permutation(Matrix<int> mtx) : Squared<int,0>(Perm(mtx)){
             permutationCheck(mtx);
         };
+
+        void newSize(size_t s)
+        {
+            throw std::invalid_argument("Invalid Method");
+        };
+
+        int& operator () (size_t ir, size_t ic)
+        {
+            if (ir >= (*this).rows() || ic >= (*this).cols()) {
+                throw std::invalid_argument("Invalid Index");
+            }
+
+            return Squared<int,0>::getMatrix()[ir][ic];
+        }
     };
 }
