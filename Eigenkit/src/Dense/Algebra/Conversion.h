@@ -18,15 +18,18 @@ namespace ek
     template <typename T, bool D>
     static Matrix<T, D, D> matrix (Vector<T, D> vec)
     {
-        Matrix<T,D,D> mtx;
-
-        if (vec.dim() == 0) {return mtx;}
+        std::vector<size_t> dim;
 
         if (vec.rows() == 1) {
-            mtx.newSize(1, vec.dim());
+            dim = {1, vec.dim()};
+        } else if (vec.cols() == 1) {
+            dim = {vec.dim(), 1};
         } else {
-            mtx.newSize(vec.dim(), 1);
+            Matrix<T, D, D> mtx;
+            return mtx;
         }
+
+        Matrix<T, D, D> mtx(dim[0], dim[1]);
 
         auto it = vec.begin();
         for (auto e = mtx.begin(); e != mtx.end(); e++) {
