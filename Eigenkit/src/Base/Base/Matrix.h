@@ -30,12 +30,12 @@ namespace ek
         size_t cols();
         bool drows();
         bool dcols();
-        T& operator () (size_t, size_t);
-        void newSize(size_t, size_t);
-
         struct Iterator;
         Iterator begin() { return Iterator(&(this->matrix[0][0]), &matrix); }
         Iterator end()   { return Iterator(&(this->matrix[(*this).rows()-1][(*this).cols()]), &matrix); }
+
+        void newSize(size_t, size_t);
+        T& operator () (size_t, size_t);
         void reshape(size_t);
         Matrix<T, DR, DC> sub(size_t, size_t, size_t, size_t);
 

@@ -27,5 +27,12 @@ namespace ek {
                 return Matrix<T,0,D>(i,0);
             }
         }
+
+        size_t dim()
+        {
+            return std::max((*this).rows(), (*this).cols());
+        }
+
+        static Matrix<T, D, D> matrix (Vector<T, D>);
     };
 }

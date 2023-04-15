@@ -1,6 +1,5 @@
 namespace ek {
-    template <bool D=1>
-    class Permutation : public Squared<bool,D>
+    class Permutation : public Squared<int,0>
     {
     private:
         void permutationCheck (Matrix<int> mtx)
@@ -11,23 +10,23 @@ namespace ek {
 
             std::vector<int> indexes;
             for (size_t i=0; i<mtx.cols(); i++) {
-                if ((mtx(0,i) != i+1) || (std::binary_search(indexes.begin(), indexes.end(), mtx(1,i)))) {
+                if (((size_t)mtx(0,i) != i+1) || (std::binary_search(indexes.begin(), indexes.end(), mtx(1,i)))) {
                     throw std::invalid_argument("Invalid Argument");
                 }
                 indexes.insert(indexes.cend(), mtx(1,i));
             }
         }
 
-        std::vector<std::vector<bool>> Perm(Matrix<int> mtx)
+        std::vector<std::vector<int>> Perm(Matrix<int> mtx)
         {
-            std::vector<std::vector<bool>> arr;
+            std::vector<std::vector<int>> arr;
 
             arr.resize(mtx.cols());
             int i=0;
             for (auto r = arr.begin(); r != arr.end(); r++) {
                 (*r).resize(mtx.cols());
                 if (mtx(0,i) == i+1) {
-                    (*r)[mtx(1,i)] = 1;
+                    (*r)[mtx(1,i)-1] = 1;
                     i++;
                 } else {
                     throw std::invalid_argument("Invalid Argument");
@@ -38,7 +37,7 @@ namespace ek {
         }
 
     public:
-        Permutation(Matrix<int> mtx) : Squared<bool,D>(Perm(mtx)){
+        Permutation(Matrix<int> mtx) : Squared<int,0>(Perm(mtx)){
             permutationCheck(mtx);
         };
     };

@@ -1,28 +1,31 @@
 namespace ek {
     template <bool DR=1, bool DC=1>
-    class Binary : public Matrix<bool,DR,DC>
+    class Binary : public Matrix<int,DR,DC>
     {
-    public:
-        Binary(int (*f)(int p), size_t rs, size_t cs) : Matrix<bool,DR,DC>(App((*f), rs, cs)){};
-
+    private:
         std::vector<std::vector<int>> App (int (*f)(int p), size_t rs, size_t cs)
         {
-            std::vector<std::vector<bool>> arr;
+            std::vector<std::vector<int>> arr;
 
             arr.resize(rs);
             int i = 0;
             for (auto r=arr.begin(); r != arr.end(); r++) {
                 (*r).resize(cs);
-                if ((*f)(i) < cs) {
+                if ((size_t)(*f)(i) < cs) {
                     (*r)[(*f)(i)] = 1;
                 } else {
-                    throw std::invalid_argument("Invalid Argument");
+                    throw std::invalid_argument("Invalid Size");
                 }
                 i++;
             }
 
             return arr;
         }
+
+    public:
+        Binary(int (*f)(int p), size_t rs, size_t cs) : Matrix<int,DR,DC>(App((*f), rs, cs)){};
+
+        static Matrix<int, DR, DC> matrix (Binary<DR, DC>);
 
     };
 }
