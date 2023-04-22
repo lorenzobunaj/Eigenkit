@@ -27,6 +27,12 @@ namespace ek {
             return diag;
         }
 
+    protected:
+        std::vector<std::vector<T>>& getMatrix()
+        {
+            return Squared<T,D>::getMatrix();
+        }
+
     public:
         Diagonal() : Squared<T,D>(){};
 
@@ -34,5 +40,21 @@ namespace ek {
         : Squared<T,D>(arr){diagonalCheck(*this);};
 
         Diagonal(std::vector<T> arr) : Squared<T,D>(diagonalize(arr)) {};
+
+        T& operator () (size_t ir, size_t ic)
+        {
+            std::vector<std::vector<T>> matrix = (*this).getMatrix();
+
+            if (ir >= (*this).dim() || ic >= (*this).dim()) {
+                if (ir != ic) {
+                    throw std::invalid_argument("Invalid Index");
+                }
+                (*this).newSize(std::max(ir+1, ic+1));
+            }
+
+            if (ir != ic) {return matrix[ir][ic];}
+
+            return (*this).getMatrix()[ir][ic];
+        }
     };
 }

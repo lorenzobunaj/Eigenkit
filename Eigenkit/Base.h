@@ -7,6 +7,7 @@
 #include "src/Base/Utils/Sub.h"
 #include "src/Base/Utils/Cout.h"
 #include "src/Base/Types/Vector.h"
+#include "src/Base/Types/Ones.h"
 #include "src/Base/Types/Squared.h"
 #include "src/Base/Types/Diagonal.h"
 #include "src/Base/Types/Permutation.h"

@@ -11,7 +11,7 @@ namespace ek {
         }
 
     protected:
-        std::vector<std::vector<T>> getMatrix()
+        std::vector<std::vector<T>>& getMatrix()
         {
             return Matrix<T,D,D>::matrix;
         }
@@ -37,6 +37,15 @@ namespace ek {
         {
             Matrix<T, D, D>::newSize(s, s);
         };
+
+        T& operator () (size_t ir, size_t ic)
+        {
+            if (ir >= (*this).dim() || ic >= (*this).dim()) {
+                (*this).newSize(std::max(ir+1, ic+1));
+            }
+
+            return (*this).getMatrix()[ir][ic];
+        }
 
         static Matrix<T, D, D> matrix (Squared<T, D>);
     };

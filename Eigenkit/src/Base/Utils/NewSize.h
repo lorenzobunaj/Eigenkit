@@ -21,8 +21,9 @@ namespace ek
     template <typename T, bool DR, bool DC>
     T& Matrix<T, DR, DC>::operator () (size_t ir, size_t ic)
     {
-        if (ir >= (*this).rows()) {(*this).newSize(ir+1, (*this).cols());}
-        if (ic >= (*this).cols()) {(*this).newSize((*this).rows(), ic+1);}
+        if (ir >= (*this).rows() || ic >= (*this).cols()) {
+            (*this).newSize(std::max((*this).rows(),ir+1), std::max((*this).cols(),ic+1));
+        }
 
         return matrix[ir][ic];
     }

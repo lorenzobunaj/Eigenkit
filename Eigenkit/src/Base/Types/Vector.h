@@ -3,12 +3,23 @@ namespace ek {
     class Vector : public Matrix<T,0,D>
     {
     protected:
-        std::vector<std::vector<T>>& getMatrix() {return Matrix<T,0,D>::getMatrix();}
         bool row = 1;
+
+        std::vector<std::vector<T>>& getMatrix()
+        {
+            return Matrix<T,0,D>::matrix;
+        }
+
+        std::vector<std::vector<T>> vectorize(std::vector<T> vec)
+        {
+            std::vector<std::vector<T>> mtx = {vec};
+            return mtx;
+        }
 
     public:
         Vector() : Matrix<T,0,D>(){};
         Vector(std::initializer_list<T> arr) : Matrix<T,0,D>({arr}){};
+        Vector(std::vector<T> vec) : Matrix<T,0,D>(vectorize(vec)){};
 
         void newSize(size_t s)
         {
@@ -22,9 +33,15 @@ namespace ek {
         T& operator () (size_t i)
         {
             if (row) {
-                return Matrix<T,0,D>(0,i);
+                if (i >= (*this).cols()) {
+                    (*this).newSize(i+1);
+                }
+                return getMatrix()[0][i];
             } else {
-                return Matrix<T,0,D>(i,0);
+                if (i >= (*this).rows()) {
+                    (*this).newSize(i+1);
+                }
+                return getMatrix()[i][0];
             }
         }
 
