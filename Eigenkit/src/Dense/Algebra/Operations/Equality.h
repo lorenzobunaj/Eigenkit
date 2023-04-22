@@ -1,0 +1,6 @@
+#ifndef EQUALITY_H_INCLUDED
+#define EQUALITY_H_INCLUDED
+
+
+
+#endif // EQUALITY_H_INCLUDED
