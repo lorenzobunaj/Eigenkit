@@ -1,22 +1,14 @@
-#include <vector>
-#include <complex>
-#include <typeinfo>
-#include <algorithm>
-#include <iterator>
-#include <cstddef>
-#include <iostream>
-
 namespace ek
 {
-    template <typename T, bool DR=1, bool DC=1>
+    template <typename T>
     class Matrix
     {
     protected:
         std::vector<std::vector<T>> matrix;
         std::size_t nr;
         std::size_t nc;
-        bool dr = DR;
-        bool dc = DC;
+        bool dr = 1;
+        bool dc = 1;
 
         void setDynamic(bool, bool);
 
@@ -37,8 +29,20 @@ namespace ek
         void newSize(size_t, size_t);
         T& operator () (size_t, size_t);
         void reshape(size_t);
-        Matrix<T, DR, DC> sub(size_t, size_t, size_t, size_t);
+        Matrix<T> sub(size_t, size_t, size_t, size_t);
 
-        Matrix<T, DR, DC> operator + (Matrix<T, DR, DC>);
+        Matrix<T> operator + (Matrix<T>);
+        Matrix<T> operator + (T);
+        Matrix<T> operator - (Matrix<T>);
+        Matrix<T> operator - (T);
+        Matrix<T> operator * (T);
+        void operator += (Matrix<T>);
+        void operator += (T);
+        void operator -= (Matrix<T>);
+        void operator -= (T);
+        void operator *= (T);
+        bool operator == (Matrix<T>);
+        bool operator != (Matrix<T>);
+        Matrix<T> operator - ();
     };
 }

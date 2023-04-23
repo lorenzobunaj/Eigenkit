@@ -1,13 +1,13 @@
 namespace ek {
-    template <typename T, bool D=1>
-    class Vector : public Matrix<T,0,D>
+    template <typename T>
+    class Vector : public Matrix<T>
     {
     protected:
         bool row = 1;
 
         std::vector<std::vector<T>>& getMatrix()
         {
-            return Matrix<T,0,D>::matrix;
+            return Matrix<T>::matrix;
         }
 
         std::vector<std::vector<T>> vectorize(std::vector<T> vec)
@@ -17,16 +17,16 @@ namespace ek {
         }
 
     public:
-        Vector() : Matrix<T,0,D>(){};
-        Vector(std::initializer_list<T> arr) : Matrix<T,0,D>({arr}){};
-        Vector(std::vector<T> vec) : Matrix<T,0,D>(vectorize(vec)){};
+        Vector() : Matrix<T>(){};
+        Vector(std::initializer_list<T> arr) : Matrix<T>({arr}){};
+        Vector(std::vector<T> vec) : Matrix<T>(vectorize(vec)){};
 
         void newSize(size_t s)
         {
             if (row) {
-                Matrix<T,0,D>::newSize(1, s);
+                Matrix<T>::newSize(1, s);
             } else {
-                Matrix<T,0,D>::newSize(s, 1);
+                Matrix<T>::newSize(s, 1);
             }
         }
 
@@ -50,6 +50,6 @@ namespace ek {
             return std::max((*this).rows(), (*this).cols());
         }
 
-        static Matrix<T, D, D> matrix (Vector<T, D>);
+        static Matrix<T> matrix (Vector<T>);
     };
 }

@@ -2,6 +2,7 @@
 #include "../src/Dense/Algebra/Operations/Arithmetic.h"
 #include "../src/Dense/Algebra/Operations/Products.h"
 #include "../src/Dense/Algebra/Operations/Assignment.h"
+#include "../src/Dense/Algebra/Operations/Equality.h"
 #include "../src/Dense/Algebra/Operations/Unary.h"
 #include "../src/Dense/Algebra/Operations/Transpose.h"
 #include "../src/Dense/Algebra/Operations/Conjugate.h"

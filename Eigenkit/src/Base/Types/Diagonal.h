@@ -1,9 +1,9 @@
 namespace ek {
-    template <typename T, bool D=1>
-    class Diagonal : public Squared<T,D>
+    template <typename T>
+    class Diagonal : public Squared<T>
     {
     private:
-        void diagonalCheck (Squared<T,D> mtx)
+        void diagonalCheck (Squared<T> mtx)
         {
             for (size_t i=0;i<mtx.rows();i++) {
                 for (size_t j=0;j<mtx.cols();j++) {
@@ -30,16 +30,16 @@ namespace ek {
     protected:
         std::vector<std::vector<T>>& getMatrix()
         {
-            return Squared<T,D>::getMatrix();
+            return Squared<T>::getMatrix();
         }
 
     public:
-        Diagonal() : Squared<T,D>(){};
+        Diagonal() : Squared<T>(){};
 
         Diagonal(std::initializer_list<std::initializer_list<T>> arr)
-        : Squared<T,D>(arr){diagonalCheck(*this);};
+        : Squared<T>(arr){diagonalCheck(*this);};
 
-        Diagonal(std::vector<T> arr) : Squared<T,D>(diagonalize(arr)) {};
+        Diagonal(std::vector<T> arr) : Squared<T>(diagonalize(arr)) {};
 
         T& operator () (size_t ir, size_t ic)
         {

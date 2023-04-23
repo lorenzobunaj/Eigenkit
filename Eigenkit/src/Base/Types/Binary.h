@@ -1,9 +1,9 @@
 namespace ek {
-    template <bool DR=1, bool DC=1>
-    class Binary : public Matrix<int,DR,DC>
+    template <typename T>
+    class Binary : public Matrix<T>
     {
     private:
-        void binaryCheck(Matrix<int,DR,DC> mtx)
+        void binaryCheck(Matrix<T> mtx)
         {
             for (auto it : mtx)
             {
@@ -12,9 +12,9 @@ namespace ek {
                 }
             }
         }
-        std::vector<std::vector<int>> app (int (*f)(int p), size_t rs, size_t cs)
+        std::vector<std::vector<T>> app (int (*f)(int p), size_t rs, size_t cs)
         {
-            std::vector<std::vector<int>> arr;
+            std::vector<std::vector<T>> arr;
 
             arr.resize(rs);
             int i = 0;
@@ -31,20 +31,44 @@ namespace ek {
             return arr;
         }
 
+    protected:
+        std::vector<std::vector<T>>& getMatrix()
+        {
+            return Matrix<T>::matrix;
+        }
+
     public:
-        Binary() : Matrix<int,DR,DC>(){};
+        Binary() : Matrix<T>(){};
 
-        Binary(size_t r, size_t c) : Matrix<int,DR,DC>(r, c){};
+        Binary(size_t r, size_t c) : Matrix<T>(r, c){};
 
-        Binary(std::initializer_list<std::initializer_list<int>> arr)
-        : Matrix<int,DR,DC>(arr){binaryCheck(*this);};
+        Binary(std::initializer_list<std::initializer_list<T>> arr)
+        : Matrix<T>(arr){binaryCheck(*this);};
 
-        Binary(std::vector<std::vector<int>> arr)
-        : Matrix<int,DR,DC>(arr){binaryCheck(*this);};
+        Binary(std::vector<std::vector<T>> arr)
+        : Matrix<T>(arr){binaryCheck(*this);};
 
-        Binary(int (*f)(int p), size_t rs, size_t cs) : Matrix<int,DR,DC>(app((*f), rs, cs)){};
+        Binary(int (*f)(int p), size_t rs, size_t cs) : Matrix<T>(app((*f), rs, cs)){};
 
-        static Matrix<int, DR, DC> matrix (Binary<DR, DC>);
+        static Matrix<T> matrix (Binary<T>);
+
+        T operator () (size_t ir, size_t ic)
+        {
+            if (ir >= (*this).rows() || ic >= (*this).cols()) {
+                throw std::invalid_argument("Invalid Index");
+            }
+
+            return (*this).getMatrix()[ir][ic];
+        };
+
+        void bnot (size_t ir, size_t ic)
+        {
+            if (ir >= (*this).rows() || ic >= (*this).cols()) {
+                throw std::invalid_argument("Invalid Index");
+            }
+
+            (*this).getMatrix()[ir][ic] = !((*this).getMatrix()[ir][ic]);
+        }
 
     };
 }

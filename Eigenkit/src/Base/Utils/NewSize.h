@@ -1,7 +1,7 @@
 namespace ek
 {
-    template <typename T, bool DR, bool DC>
-    void Matrix<T, DR, DC>::newSize(size_t r, size_t c)
+    template <typename T>
+    void Matrix<T>::newSize(size_t r, size_t c)
     {
         if (r != (*this).rows()) {
             if ((*this).drows()) {nr = r;}
@@ -18,8 +18,8 @@ namespace ek
         }
     }
 
-    template <typename T, bool DR, bool DC>
-    T& Matrix<T, DR, DC>::operator () (size_t ir, size_t ic)
+    template <typename T>
+    T& Matrix<T>::operator () (size_t ir, size_t ic)
     {
         if (ir >= (*this).rows() || ic >= (*this).cols()) {
             (*this).newSize(std::max((*this).rows(),ir+1), std::max((*this).cols(),ic+1));

@@ -1,9 +1,9 @@
 namespace ek {
-    template <typename T, bool D=1>
-    class Ones : public Vector<T,D>
+    template <typename T>
+    class Ones : public Vector<T>
     {
     private:
-        void onesCheck(Vector<T,D> vec)
+        void onesCheck(Vector<T> vec)
         {
             for (auto it=vec.begin(); it != vec.end(); it++) {
                 if (*it != 1) {
@@ -24,17 +24,17 @@ namespace ek {
         }
 
     protected:
-        bool row = Vector<T,D>::row;
+        bool row = Vector<T>::row;
 
         std::vector<std::vector<T>>& getMatrix()
         {
-            return Vector<T,D>::getMatrix();
+            return Vector<T>::getMatrix();
         }
 
     public:
-        Ones() : Vector<T,D>(){};
-        Ones(size_t s) : Vector<T,D>(onesize(s)){};
-        Ones(std::initializer_list<T> arr) : Vector<T,D>({arr}){
+        Ones() : Vector<T>(){};
+        Ones(size_t s) : Vector<T>(onesize(s)){};
+        Ones(std::initializer_list<T> arr) : Vector<T>({arr}){
             onesCheck(*this);
         };
 
@@ -42,14 +42,14 @@ namespace ek {
         {
             if (row) {
                 size_t srt = (*this).cols()-1;
-                Vector<T,D>::newSize(1, s);
+                Vector<T>::newSize(1, s);
 
                 for (size_t i=srt; i<(*this).cols(); i++) {
                     getMatrix()[0][i] = 1;
                 }
             } else {
                 size_t srt = (*this).rows()-1;
-                Vector<T,D>::newSize(s, 1);
+                Vector<T>::newSize(s, 1);
 
                 for (size_t i=srt; i<(*this).rows(); i++) {
                     getMatrix()[i][0] = 1;

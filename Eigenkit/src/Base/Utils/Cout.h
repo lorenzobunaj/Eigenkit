@@ -1,7 +1,7 @@
 namespace ek
 {
-    template <typename T, bool DR, bool DC>
-    std::ostream& operator << (std::ostream& os, Matrix<T, DR, DC> mtx)
+    template <typename T>
+    std::ostream& operator << (std::ostream& os, Matrix<T> mtx)
     {
         size_t i = 0;
 

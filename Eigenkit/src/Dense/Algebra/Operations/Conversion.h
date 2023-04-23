@@ -1,9 +1,9 @@
 namespace ek
 {
-    template <typename T, bool D>
-    static Matrix<T, D, D> matrix (Squared<T, D> sq)
+    template <typename T>
+    static Matrix<T> matrix (Squared<T> sq)
     {
-        Matrix<T,D,D> mtx(sq.rows(), sq.cols());
+        Matrix<T> mtx(sq.rows(), sq.cols());
 
         if (sq.rows() == 0) {return mtx;}
 
@@ -15,10 +15,10 @@ namespace ek
         return mtx;
     }
 
-    template <typename T, bool D>
-    static Matrix<T, D, D> matrix (Vector<T, D> vec)
+    template <typename T>
+    static Matrix<T> matrix (Vector<T> vec)
     {
-        Matrix<T, D, D> mtx(vec.rows(), vec.cols());
+        Matrix<T> mtx(vec.rows(), vec.cols());
 
         if (vec.rows() == 0) {return mtx;}
 
@@ -30,10 +30,10 @@ namespace ek
         return mtx;
     }
 
-    template <bool DR, bool DC>
-    static Matrix<int, DR, DC> matrix (Binary<DR, DC> bn)
+    template <typename T>
+    static Matrix<T> matrix (Binary<T> bn)
     {
-        Matrix<int, DR, DC> mtx(bn.rows(), bn.cols());
+        Matrix<T> mtx(bn.rows(), bn.cols());
 
         if (bn.rows() == 0) {return mtx;}
 

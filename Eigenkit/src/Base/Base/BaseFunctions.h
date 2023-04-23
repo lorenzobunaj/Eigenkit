@@ -1,32 +1,32 @@
 namespace ek
 {
-    template <typename T, bool DR, bool DC>
-    bool Matrix<T, DR, DC>::drows()
+    template <typename T>
+    bool Matrix<T>::drows()
     {
         return dr;
     }
 
-    template <typename T, bool DR, bool DC>
-    bool Matrix<T, DR, DC>::dcols()
+    template <typename T>
+    bool Matrix<T>::dcols()
     {
         return dc;
     }
 
-    template <typename T, bool DR, bool DC>
-    void Matrix<T, DR, DC>::setDynamic(bool drows, bool dcols)
+    template <typename T>
+    void Matrix<T>::setDynamic(bool drows, bool dcols)
     {
         dr = drows;
         dc = dcols;
     }
 
-    template <typename T, bool DR, bool DC>
-    size_t Matrix<T, DR, DC>::rows()
+    template <typename T>
+    size_t Matrix<T>::rows()
     {
         return nr;
     }
 
-    template <typename T, bool DR, bool DC>
-    size_t Matrix<T, DR, DC>::cols()
+    template <typename T>
+    size_t Matrix<T>::cols()
     {
         return nc;
     }

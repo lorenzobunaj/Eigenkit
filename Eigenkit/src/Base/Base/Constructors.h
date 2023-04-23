@@ -1,14 +1,14 @@
 namespace ek
 {
-    template <typename T, bool  DR, bool DC>
-    Matrix<T, DR, DC>::Matrix()
+    template <typename T>
+    Matrix<T>::Matrix()
     {
         nr = 0;
         nc = 0;
     }
 
-    template <typename T, bool  DR, bool DC>
-    Matrix<T, DR, DC>::Matrix(size_t r, size_t c)
+    template <typename T>
+    Matrix<T>::Matrix(size_t r, size_t c)
     {
         matrix.resize(r);
         for (auto r = matrix.begin(); r != matrix.end(); r++) {
@@ -19,8 +19,8 @@ namespace ek
         nc = c;
     }
 
-    template <typename T, bool DR, bool DC>
-    Matrix<T, DR, DC>::Matrix(std::initializer_list<std::initializer_list<T>> arr)
+    template <typename T>
+    Matrix<T>::Matrix(std::initializer_list<std::initializer_list<T>> arr)
     {
         for (auto r = arr.begin(); r != arr.end(); r++) {
             if ((*r).size() != (*(arr.begin())).size()) {
@@ -37,8 +37,8 @@ namespace ek
         nc = (*(arr.begin())).size();
     }
 
-    template <typename T, bool DR, bool DC>
-    Matrix<T, DR, DC>::Matrix(std::vector<std::vector<T>> arr)
+    template <typename T>
+    Matrix<T>::Matrix(std::vector<std::vector<T>> arr)
     {
         for (auto r=arr.begin(); r != arr.end(); r++) {
             if ((*r).size() != (*(arr.begin())).size()) {

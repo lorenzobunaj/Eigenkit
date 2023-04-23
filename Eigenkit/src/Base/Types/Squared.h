@@ -1,9 +1,9 @@
 namespace ek {
-    template <typename T, bool D=1>
-    class Squared : public Matrix<T,D,D>
+    template <typename T>
+    class Squared : public Matrix<T>
     {
     private:
-        void squaredCheck(Matrix<T,D,D> mtx)
+        void squaredCheck(Matrix<T> mtx)
         {
             if (mtx.rows() != mtx.cols()) {
                 throw std::invalid_argument("Invalid Argument");
@@ -13,20 +13,20 @@ namespace ek {
     protected:
         std::vector<std::vector<T>>& getMatrix()
         {
-            return Matrix<T,D,D>::matrix;
+            return Matrix<T>::matrix;
         }
 
     public:
-        Squared() : Matrix<T,D,D>(){};
+        Squared() : Matrix<T>(){};
 
         Squared(size_t r, size_t c)
-        : Matrix<T,D,D>(r, c){squaredCheck(*this);};
+        : Matrix<T>(r, c){squaredCheck(*this);};
 
         Squared(std::initializer_list<std::initializer_list<T>> arr)
-        : Matrix<T,D,D>(arr){squaredCheck(*this);};
+        : Matrix<T>(arr){squaredCheck(*this);};
 
         Squared(std::vector<std::vector<T>> arr)
-        : Matrix<T,D,D>(arr){squaredCheck(*this);};
+        : Matrix<T>(arr){squaredCheck(*this);};
 
         size_t dim()
         {
@@ -35,7 +35,7 @@ namespace ek {
 
         void newSize(size_t s)
         {
-            Matrix<T, D, D>::newSize(s, s);
+            Matrix<T>::newSize(s, s);
         };
 
         T& operator () (size_t ir, size_t ic)
@@ -47,6 +47,6 @@ namespace ek {
             return (*this).getMatrix()[ir][ic];
         }
 
-        static Matrix<T, D, D> matrix (Squared<T, D>);
+        static Matrix<T> matrix (Squared<T>);
     };
 }

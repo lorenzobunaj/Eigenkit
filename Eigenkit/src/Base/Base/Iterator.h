@@ -1,7 +1,7 @@
 namespace ek
 {
-    template <typename T, bool DR, bool DC>
-    struct Matrix<T, DR, DC>::Iterator
+    template <typename T>
+    struct Matrix<T>::Iterator
     {
         using iterator_category = std::forward_iterator_tag;
 
