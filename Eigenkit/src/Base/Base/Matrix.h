@@ -44,5 +44,10 @@ namespace ek
         bool operator == (Matrix<T>);
         bool operator != (Matrix<T>);
         Matrix<T> operator - ();
+        Matrix<T> t();
+        Matrix<T> c();
+        Matrix<T> h();
+        Matrix<T> complement(size_t, size_t);
+        T det();
     };
 }
