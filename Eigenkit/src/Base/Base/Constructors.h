@@ -1,12 +1,13 @@
 namespace ek
 {
+    // standard constructor
     template <typename T>
     Matrix<T>::Matrix()
     {
         nr = 0;
         nc = 0;
     }
-
+    // given rows and cols number
     template <typename T>
     Matrix<T>::Matrix(size_t r, size_t c)
     {
@@ -18,7 +19,7 @@ namespace ek
         nr = r;
         nc = c;
     }
-
+    // given an std::initializer_list array
     template <typename T>
     Matrix<T>::Matrix(std::initializer_list<std::initializer_list<T>> arr)
     {
@@ -36,7 +37,7 @@ namespace ek
         nr = arr.size();
         nc = (*(arr.begin())).size();
     }
-
+    // given an std::vector array
     template <typename T>
     Matrix<T>::Matrix(std::vector<std::vector<T>> arr)
     {

@@ -3,6 +3,7 @@ namespace ek {
     class Binary : public Matrix<T>
     {
     private:
+        // checks whether the matrix contains only 1s and 0s
         void binaryCheck(Matrix<T> mtx)
         {
             for (auto it : mtx)
@@ -12,6 +13,7 @@ namespace ek {
                 }
             }
         }
+        // let f : Z -> Z, output:= matrix so that a(i,j) = 1 if j = f(i) else 0
         std::vector<std::vector<T>> app (int (*f)(int p), size_t rs, size_t cs)
         {
             std::vector<std::vector<T>> arr;
@@ -30,28 +32,24 @@ namespace ek {
 
             return arr;
         }
-
     protected:
+        // get original matrix
         std::vector<std::vector<T>>& getMatrix()
         {
             return Matrix<T>::matrix;
         }
-
     public:
+        // standard constructors
         Binary() : Matrix<T>(){};
-
         Binary(size_t r, size_t c) : Matrix<T>(r, c){};
-
         Binary(std::initializer_list<std::initializer_list<T>> arr)
         : Matrix<T>(arr){binaryCheck(*this);};
-
         Binary(std::vector<std::vector<T>> arr)
         : Matrix<T>(arr){binaryCheck(*this);};
-
+        // special constructor
         Binary(int (*f)(int p), size_t rs, size_t cs) : Matrix<T>(app((*f), rs, cs)){};
-
-        static Matrix<T> matrix (Binary<T>);
-
+        // overloaded () operator
+        // can't modify elements
         T operator () (size_t ir, size_t ic)
         {
             if (ir >= (*this).rows() || ic >= (*this).cols()) {
@@ -60,7 +58,7 @@ namespace ek {
 
             return (*this).getMatrix()[ir][ic];
         };
-
+        // a(i,j) = !a(i,j)
         void bnot (size_t ir, size_t ic)
         {
             if (ir >= (*this).rows() || ic >= (*this).cols()) {

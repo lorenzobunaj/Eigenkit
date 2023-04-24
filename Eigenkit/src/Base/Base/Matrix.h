@@ -10,8 +10,6 @@ namespace ek
         bool dr = 1;
         bool dc = 1;
 
-        void setDynamic(bool, bool);
-
     public:
         Matrix();
         Matrix(size_t, size_t);
@@ -22,6 +20,7 @@ namespace ek
         size_t cols();
         bool drows();
         bool dcols();
+        void dynamic(bool, bool);
         struct Iterator;
         Iterator begin() { return Iterator(&(matrix[0][0]), &matrix); }
         Iterator end()   { return Iterator(&(matrix[(*this).rows()-1][(*this).cols()]), &matrix); }
