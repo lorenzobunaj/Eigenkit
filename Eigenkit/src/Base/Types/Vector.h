@@ -3,7 +3,7 @@ namespace ek {
     class Vector : public Matrix<T>
     {
     protected:
-        bool row = 1;
+        bool row;
 
         std::vector<std::vector<T>>& getMatrix()
         {
@@ -18,8 +18,15 @@ namespace ek {
 
     public:
         Vector() : Matrix<T>(){};
-        Vector(std::initializer_list<T> arr) : Matrix<T>({arr}){};
-        Vector(std::vector<T> vec) : Matrix<T>(vectorize(vec)){};
+        Vector(size_t s, bool r) : Matrix<T>(r == 1 ? 1 : s,r == 0 ? 1 : s){
+            row = r;
+        };
+        Vector(std::initializer_list<T> arr) : Matrix<T>({arr}){
+            row = 1;
+        };
+        Vector(std::vector<T> vec) : Matrix<T>(vectorize(vec)){
+            row = 1;
+        };
 
         void newSize(size_t s)
         {
@@ -51,5 +58,20 @@ namespace ek {
         }
 
         static Matrix<T> matrix (Vector<T>);
+
+        Vector<T> t()
+        {
+            Vector<T> out((*this).dim(), !row);
+
+            auto it = (*this).begin();
+            for (auto e=out.begin(); e != out.end(); e++) {
+                *e = *(it++);
+            }
+
+            return out;
+        }
+
+        T dot(Vector<T>);
+        Vector<T> cross(Vector<T>);
     };
 }

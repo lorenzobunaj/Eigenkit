@@ -1,6 +1,21 @@
-#ifndef COFACTOR_H_INCLUDED
-#define COFACTOR_H_INCLUDED
+namespace ek
+{
+    template <typename T>
+    T Matrix<T>::cof(size_t ir, size_t ic)
+    {
+        return std::pow(-1, ir+ic)*(*this).minor(ir,ic);
+    }
+    template <typename T>
+    Matrix<T> Matrix<T>::cofMatrix()
+    {
+        Matrix<T> out((*this).rows(), (*this).cols());
 
+        for (size_t i=0; i<(*this).rows(); i++) {
+            for (size_t j=0; j<(*this).cols(); j++) {
+                out(i,j) = (*this).cof(i,j);
+            }
+        }
 
-
-#endif // COFACTOR_H_INCLUDED
+        return out;
+    }
+}

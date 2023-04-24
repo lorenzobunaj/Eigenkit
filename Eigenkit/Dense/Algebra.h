@@ -8,6 +8,7 @@
 #include "../src/Dense/Algebra/Operations/Conjugate.h"
 #include "../src/Dense/Algebra/Operations/Complement.h"
 #include "../src/Dense/Algebra/Reductions/Determinant.h"
+#include "../src/Dense/Algebra/Operations/Minor.h"
 #include "../src/Dense/Algebra/Operations/Cofactor.h"
 #include "../src/Dense/Algebra/Operations/Inverse.h"
 #include "../src/Dense/Algebra/Transformations/HouseholderReflection.h"

@@ -30,6 +30,7 @@ namespace ek
         T& operator () (size_t, size_t);
         void reshape(size_t);
         Matrix<T> sub(size_t, size_t, size_t, size_t);
+        Matrix<T> sub(size_t, size_t);
 
         Matrix<T> operator + (Matrix<T>);
         Matrix<T> operator + (T);
@@ -47,7 +48,10 @@ namespace ek
         Matrix<T> t();
         Matrix<T> c();
         Matrix<T> h();
-        Matrix<T> complement(size_t, size_t);
         T det();
+        T minor(size_t, size_t);
+        T cof(size_t, size_t);
+        Matrix<T> cofMatrix();
+        Matrix<T> inverse();
     };
 }

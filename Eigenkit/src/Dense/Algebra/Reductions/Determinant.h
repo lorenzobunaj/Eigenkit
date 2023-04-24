@@ -10,7 +10,7 @@ namespace ek
         } else {
             T complementSum = 0;
             for (size_t i=0; i<(*this).rows(); i++) {
-                complementSum += std::pow(-1,i)*(*this)(i,0)*((*this).complement(i,0)).det();
+                complementSum += std::pow(-1,i)*(*this)(i,0)*((*this).sub(i,0)).det();
             }
             return complementSum;
         }
