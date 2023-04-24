@@ -6,7 +6,6 @@
 #include "../src/Dense/Algebra/Operations/Unary.h"
 #include "../src/Dense/Algebra/Operations/Transpose.h"
 #include "../src/Dense/Algebra/Operations/Conjugate.h"
-#include "../src/Dense/Algebra/Operations/Complement.h"
 #include "../src/Dense/Algebra/Reductions/Determinant.h"
 #include "../src/Dense/Algebra/Operations/Minor.h"
 #include "../src/Dense/Algebra/Operations/Cofactor.h"
