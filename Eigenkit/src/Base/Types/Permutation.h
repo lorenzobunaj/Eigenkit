@@ -36,6 +36,12 @@ namespace ek
 
             return arr;
         }
+    protected:
+        // get original matrix
+        std::vector<std::vector<T>>& getMatrix()
+        {
+            return Squared<T>::matrix;
+        }
     public:
         // special constructor
         Permutation(Matrix<T> mtx) : Squared<T>(Perm(mtx)){
@@ -55,7 +61,7 @@ namespace ek
                 throw std::invalid_argument("Invalid Index");
             }
 
-            return Squared<T>::getMatrix()[ir][ic];
+            return getMatrix()[ir][ic];
         }
     };
 }

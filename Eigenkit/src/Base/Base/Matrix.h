@@ -5,8 +5,8 @@ namespace ek
     {
     protected:
         std::vector<std::vector<T>> matrix;
-        std::size_t nr;
-        std::size_t nc;
+        size_t nr;
+        size_t nc;
         bool dr = 1;
         bool dc = 1;
 

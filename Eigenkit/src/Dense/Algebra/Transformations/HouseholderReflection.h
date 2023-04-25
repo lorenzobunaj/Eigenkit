@@ -1,6 +1,10 @@
-#ifndef HOUSEHOLDERREFLECTION_H_INCLUDED
-#define HOUSEHOLDERREFLECTION_H_INCLUDED
+namespace ek
+{
+    template <typename T>
+    Matrix<T> HouseholderReflection(Vector<T> vec)
+    {
+        Identity<T> id(vec.dim());
 
-
-
-#endif // HOUSEHOLDERREFLECTION_H_INCLUDED
+        return (id - (T)2*vec.outer(vec.c()));
+    }
+}

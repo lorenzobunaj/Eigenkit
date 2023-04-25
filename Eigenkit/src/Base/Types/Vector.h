@@ -75,8 +75,20 @@ namespace ek {
 
             return out;
         }
-        // implement dot and cross products
+        Vector<T> c()
+        {
+            Vector<T> out((*this).dim(), row);
+
+            auto e = (*this).begin();
+            for (auto it=out.begin(); it!=out.end(); it++) {
+                *it = std::conj(*(e++));
+            }
+
+            return out;
+        }
+        // implement products
         T dot(Vector<T>);
         Vector<T> cross(Vector<T>);
+        Matrix<T> outer(Vector<T>);
     };
 }

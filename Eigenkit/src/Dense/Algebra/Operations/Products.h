@@ -60,4 +60,23 @@ namespace ek
 
         return out;
     }
+
+    template <typename T>
+    Matrix<T> Vector<T>::outer (Vector<T> vec)
+    {
+        if ((*this).cols() != 1 || vec.cols() != 1) {
+            throw std::invalid_argument("Invalid Arguments");
+        }
+
+        Matrix<T> out = *this * vec.t();
+        //((*this).rows(), vec.rows());
+
+        //for (size_t i=0; i<(*this).rows(); i++) {
+        //    for (size_t j=0; j<vec.rows(); j++) {
+        //        out(i,j) = (*this)(i) * vec(j);
+        //    }
+        //}
+
+        return out;
+    }
 }
