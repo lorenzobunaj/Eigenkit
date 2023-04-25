@@ -69,13 +69,6 @@ namespace ek
         }
 
         Matrix<T> out = *this * vec.t();
-        //((*this).rows(), vec.rows());
-
-        //for (size_t i=0; i<(*this).rows(); i++) {
-        //    for (size_t j=0; j<vec.rows(); j++) {
-        //        out(i,j) = (*this)(i) * vec(j);
-        //    }
-        //}
 
         return out;
     }

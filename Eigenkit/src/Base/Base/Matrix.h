@@ -21,6 +21,7 @@ namespace ek
         bool drows();
         bool dcols();
         void dynamic(bool, bool);
+        std::vector<std::vector<T>> mtx();
         struct Iterator;
         Iterator begin() { return Iterator(&(matrix[0][0]), &matrix); }
         Iterator end()   { return Iterator(&(matrix[(*this).rows()-1][(*this).cols()]), &matrix); }

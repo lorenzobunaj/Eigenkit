@@ -1,25 +1,13 @@
 namespace ek
 {
     template <typename T>
-    class GivensRotation : public Squared<T>
+    class Householder : public Squared<T>
     {
     private:
-        std::vector<std::vector<T>> Givensize(size_t s, size_t ir, size_t ic, T a)
+        Matrix<T> householderize(Vector<T> vec)
         {
-            std::vector<std::vector<T>> arr;
-
-            arr.resize(s);
-            size_t i=0;
-            for (auto r = arr.begin(); r != arr.end(); r++) {
-                (*r).resize(s);
-                (*r)[i++] = 1;
-            }
-            arr[ir][ir] = std::cos(a);
-            arr[ic][ic] = std::cos(a);
-            arr[ir][ic] = -std::sin(a);
-            arr[ic][ir] = std::sin(a);
-
-            return arr;
+            Identity<T> id(vec.dim());
+            return (id - (T)2*vec.outer(vec.c()));
         }
     protected:
         // get original matrix
@@ -29,7 +17,7 @@ namespace ek
         }
     public:
         // special constructor
-        GivensRotation(size_t s, size_t ir, size_t ic, T a) : Squared<T>(Givensize(s,ir,ic,a)){};
+        Householder(Vector<T> vec) : Squared<T>(householderize(vec).mtx()){};
         // overload newSize function
         // break the inheritance
         void newSize(size_t s)

@@ -29,4 +29,9 @@ namespace ek
     {
         return nc;
     }
+    template <typename T>
+    std::vector<std::vector<T>> Matrix<T>::mtx()
+    {
+        return matrix;
+    }
 }
