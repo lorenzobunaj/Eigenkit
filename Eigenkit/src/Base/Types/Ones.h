@@ -3,6 +3,7 @@ namespace ek {
     class Ones : public Vector<T>
     {
     private:
+        // check whether the vector contains only 1s
         void onesCheck(Vector<T> vec)
         {
             for (auto it=vec.begin(); it != vec.end(); it++) {
@@ -11,7 +12,8 @@ namespace ek {
                 }
             }
         }
-
+        // input:= size
+        // output:= std::vector so that a(i) = 1 for all i
         std::vector<T> onesize(size_t s)
         {
             std::vector<T> vec;
@@ -24,20 +26,24 @@ namespace ek {
         }
 
     protected:
+        // inheritance row parameter
         bool row = Vector<T>::row;
-
+        // get original matrix
         std::vector<std::vector<T>>& getMatrix()
         {
             return Vector<T>::getMatrix();
         }
 
     public:
+        // default constructors
         Ones() : Vector<T>(){};
-        Ones(size_t s) : Vector<T>(onesize(s)){};
-        Ones(std::initializer_list<T> arr) : Vector<T>({arr}){
+        Ones(std::initializer_list<T> arr) : Vector<T>(arr){
             onesCheck(*this);
         };
-
+        // special constructor
+        Ones(size_t s) : Vector<T>(onesize(s)){};
+        // overload newSize function
+        // normal newSize but new elements are 1s (not 0s)
         void newSize(size_t s)
         {
             if (row) {
@@ -56,8 +62,9 @@ namespace ek {
                 }
             }
         }
-
-        T& operator () (size_t i)
+        // overload () operator
+        // can't modify elements
+        T operator () (size_t i)
         {
             if (row) {
                 if (i >= (*this).cols()) {

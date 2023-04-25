@@ -3,6 +3,7 @@ namespace ek {
     class Diagonal : public Squared<T>
     {
     private:
+        // check whether a(i,j) = 0 if i != j
         void diagonalCheck (Squared<T> mtx)
         {
             for (size_t i=0;i<mtx.rows();i++) {
@@ -13,6 +14,8 @@ namespace ek {
                 }
             }
         }
+        // input:= vector
+        // output:= std::vector array where a(i,j) = vector[i] if i = j  else 0
         std::vector<std::vector<T>> diagonalize (std::vector<T> arr) {
             std::vector<std::vector<T>> diag;
 
@@ -26,21 +29,21 @@ namespace ek {
 
             return diag;
         }
-
     protected:
+        // get original matrix
         std::vector<std::vector<T>>& getMatrix()
         {
             return Squared<T>::getMatrix();
         }
-
     public:
+        // default constructors
         Diagonal() : Squared<T>(){};
-
         Diagonal(std::initializer_list<std::initializer_list<T>> arr)
         : Squared<T>(arr){diagonalCheck(*this);};
-
+        // special constructor
         Diagonal(std::vector<T> arr) : Squared<T>(diagonalize(arr)) {};
-
+        // overloaded () operator
+        // can modify only elements on the diagonal
         T& operator () (size_t ir, size_t ic)
         {
             std::vector<std::vector<T>> matrix = (*this).getMatrix();

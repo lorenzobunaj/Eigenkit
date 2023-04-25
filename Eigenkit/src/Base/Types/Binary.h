@@ -3,7 +3,7 @@ namespace ek {
     class Binary : public Matrix<T>
     {
     private:
-        // checks whether the matrix contains only 1s and 0s
+        // check whether the matrix contains only 1s and 0s
         void binaryCheck(Matrix<T> mtx)
         {
             for (auto it : mtx)
@@ -39,7 +39,7 @@ namespace ek {
             return Matrix<T>::matrix;
         }
     public:
-        // standard constructors
+        // default constructors
         Binary() : Matrix<T>(){};
         Binary(size_t r, size_t c) : Matrix<T>(r, c){};
         Binary(std::initializer_list<std::initializer_list<T>> arr)

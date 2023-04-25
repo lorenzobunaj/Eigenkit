@@ -4,6 +4,8 @@ namespace ek
     class Identity : public Permutation<T>
     {
     private:
+        // input:= size
+        // output:= 2xsize matrix where a(0,j) = a(1,j) = j+1
         Matrix<T> Id(size_t s)
         {
             Matrix<T> mtx(2,s);
@@ -17,6 +19,7 @@ namespace ek
         }
 
     public:
+        // special constructor
         Identity(size_t s) : Permutation<T>(Id(s)){};
     };
 }
