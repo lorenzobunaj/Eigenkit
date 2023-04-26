@@ -16,7 +16,7 @@ namespace ek
     template <typename T>
     Matrix<T> Matrix<T>::h()
     {
-        return ((*this).trans()).conj();
+        return ((*this).t()).c();
     }
 }
 
