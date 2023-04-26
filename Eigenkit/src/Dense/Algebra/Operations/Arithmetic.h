@@ -56,12 +56,23 @@ namespace ek
     template <typename T>
     Vector<T> operator + (Vector<T> op1, Vector<T> op2)
     {
-        return op1 + op2;
+        Vector<T> out;
+
+        Matrix<T> mtx1 = op1;
+        Matrix<T> mtx2 = op2;
+        out = mtx1 + mtx2;
+
+        return out;
     }
     template <typename T>
-    Vector<T> operator + (Vector<T> op, T scl)
+    Vector<T> operator + (Vector<T> op1, T scl)
     {
-        return op + scl;
+        Vector<T> out;
+
+        Matrix<T> mtx1 = op1;
+        out = mtx1 + scl;
+
+        return out;
     }
     template <typename T>
     Vector<T> operator - (Vector<T> op1, Vector<T> op2)
@@ -75,8 +86,13 @@ namespace ek
         return out;
     }
     template <typename T>
-    Vector<T> operator - (Vector<T> vec, T scl)
+    Vector<T> operator - (Vector<T> op1, T scl)
     {
-        return vec - scl;
+        Vector<T> out;
+
+        Matrix<T> mtx1 = op1;
+        out = mtx1 - scl;
+
+        return out;
     }
 }
