@@ -62,6 +62,9 @@ namespace ek {
         {
             return std::max((*this).rows(), (*this).cols());
         }
+
+        void operator = (Matrix<T>);
+        //Vector<T> operator - (Vector<T>);
         // overload t function
         // change row parameter
         Vector<T> t()

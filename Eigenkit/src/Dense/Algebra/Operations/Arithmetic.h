@@ -1,66 +1,82 @@
 namespace ek
 {
     template <typename T>
-    Matrix<T> Matrix<T>::operator + (Matrix<T> mtx)
+    Matrix<T> operator + (Matrix<T> op1, Matrix<T> op2)
     {
-        if (((*this).rows() != mtx.rows())||((*this).cols() != mtx.cols())) {
+        if ((op1.rows() != op2.rows())||(op1.cols() != op2.cols())) {
             throw std::invalid_argument("Invalid Arguments");
         }
 
-        Matrix<T> out((*this).rows(), (*this).cols());
+        Matrix<T> out(op1.rows(), op1.cols());
 
-        auto op1 = (*this).begin();
-        auto op2 = mtx.begin();
+        auto it1 = op1.begin();
+        auto it2 = op2.begin();
         for (auto e = out.begin(); e != out.end(); e++) {
-            *e = *(op1++) + *(op2++);
+            *e = *(it1++) + *(it2++);
         }
 
         return out;
     }
     template <typename T>
-    Matrix<T> Matrix<T>::operator + (T scl)
+    Matrix<T> operator + (Matrix<T> op, T scl)
     {
-        Matrix<T> out((*this).rows(), (*this).cols());
+        Matrix<T> out(op.rows(), op.cols());
 
-        auto op = (*this).begin();
+        auto it = op.begin();
         for (auto e = out.begin(); e != out.end(); e++) {
-            *e = *(op++) + scl;
+            *e = *(it++) + scl;
         }
 
         return out;
     }
-    template <typename T>
-    Matrix<T> operator + (T scl, Matrix<T> mtx)
-    {
-        return (mtx + scl);
-    }
 
     template <typename T>
-    Matrix<T> Matrix<T>::operator - (Matrix<T> mtx)
+    Matrix<T> operator - (Matrix<T> op1, Matrix<T> op2)
     {
-        if (((*this).rows() != mtx.rows())||((*this).cols() != mtx.cols())) {
+        if ((op1.rows() != op2.rows())||(op1.cols() != op2.cols())) {
             throw std::invalid_argument("Invalid Arguments");
         }
 
-        Matrix<T> out((*this).rows(), (*this).cols());
+        Matrix<T> out(op1.rows(), op1.cols());
 
-        auto op1 = (*this).begin();
-        auto op2 = mtx.begin();
+        auto it1 = op1.begin();
+        auto it2 = op2.begin();
         for (auto e = out.begin(); e != out.end(); e++) {
-            *e = *(op1++) - *(op2++);
+            *e = *(it1++) - *(it2++);
         }
 
         return out;
     }
     template <typename T>
-    Matrix<T> Matrix<T>::operator - (T scl)
+    Matrix<T> operator - (Matrix<T> op, T scl)
     {
-        return ((*this) + (-scl));
+        return (op + (-scl));
+    }
+
+    template <typename T>
+    Vector<T> operator + (Vector<T> op1, Vector<T> op2)
+    {
+        return op1 + op2;
     }
     template <typename T>
-    Matrix<T> operator - (T scl, Matrix<T> mtx)
+    Vector<T> operator + (Vector<T> op, T scl)
     {
-        Matrix<T> temp(mtx.rows(), mtx.cols());
-        return (scl + (temp - mtx));
+        return op + scl;
+    }
+    template <typename T>
+    Vector<T> operator - (Vector<T> op1, Vector<T> op2)
+    {
+        Vector<T> out;
+
+        Matrix<T> mtx1 = op1;
+        Matrix<T> mtx2 = op2;
+        out = mtx1 - mtx2;
+
+        return out;
+    }
+    template <typename T>
+    Vector<T> operator - (Vector<T> vec, T scl)
+    {
+        return vec - scl;
     }
 }

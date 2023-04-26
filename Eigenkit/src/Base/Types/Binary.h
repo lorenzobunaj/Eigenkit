@@ -6,9 +6,9 @@ namespace ek {
         // check whether the matrix contains only 1s and 0s
         void binaryCheck(Matrix<T> mtx)
         {
-            for (auto it : mtx)
+            for (auto it=mtx.begin(); it!=mtx.end(); it++)
             {
-                if (it != 0 && it != 1) {
+                if (*it != 0 && *it != 1) {
                     throw std::invalid_argument("Invalid Argument");
                 }
             }
@@ -67,6 +67,7 @@ namespace ek {
 
             (*this).getMatrix()[ir][ic] = !((*this).getMatrix()[ir][ic]);
         }
+        void operator = (Matrix<T>);
 
     };
 }

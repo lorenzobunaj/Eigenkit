@@ -7,6 +7,6 @@ namespace ek
             throw std::invalid_argument("Invalid Argument");
         }
 
-        return (1/(*this).det()) * (*this).cofMatrix().t();
+        return (1/(*this).det()) * (*this).cofactors().t();
     }
 }

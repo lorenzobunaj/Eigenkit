@@ -7,7 +7,9 @@ namespace ek
         Matrix<T> householderize(Vector<T> vec)
         {
             Identity<T> id(vec.dim());
-            return (id - (T)2*vec.outer(vec.c()));
+            Matrix<T> out = id - (T)2*vec.outer(vec.c());
+
+            return out;
         }
     protected:
         // get original matrix

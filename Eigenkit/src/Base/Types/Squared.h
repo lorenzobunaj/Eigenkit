@@ -25,6 +25,11 @@ namespace ek {
         : Matrix<T>(arr){squaredCheck(*this);};
         Squared(std::vector<std::vector<T>> arr)
         : Matrix<T>(arr){squaredCheck(*this);};
+
+        void dynamic(bool ddim)
+        {
+            Matrix<T>::dynamic(ddim, ddim);
+        }
         // return dim, since rows = cols
         size_t dim()
         {
@@ -46,5 +51,7 @@ namespace ek {
 
             return (*this).getMatrix()[ir][ic];
         }
+
+        void operator = (Matrix<T>);
     };
 }

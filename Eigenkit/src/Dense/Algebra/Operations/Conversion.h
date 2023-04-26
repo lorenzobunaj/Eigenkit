@@ -1,17 +1,61 @@
 namespace ek
 {
-    //template <typename T>
-    //static Matrix<T> matrix (Squared<T> sq)
-    //{
-    //    Matrix<T> mtx(sq.rows(), sq.cols());
+    template <typename T>
+    void Squared<T>::operator = (Matrix<T> mtx)
+    {
+        squaredCheck(mtx);
 
-    //    if (sq.rows() == 0) {return mtx;}
+        (*this).newSize(mtx.rows());
+        (*this).dynamic(mtx.drows());
 
-    //    auto it = sq.begin();
-    //    for (auto e = mtx.begin(); e != mtx.end(); e++) {
-    //        *e = *(it++);
-    //    }
+        auto it=mtx.begin();
+        for (auto e=(*this).begin(); e != (*this).end(); e++) {
+            *e = *(it++);
+        }
+    }
 
-    //    return mtx;
-    //}
+    template <typename T>
+    void Diagonal<T>::operator = (Matrix<T> mtx)
+    {
+        diagonalCheck(mtx);
+
+        (*this).newSize(mtx.rows());
+        (*this).dynamic(mtx.drows());
+
+        for (size_t i=0; i<(*this).dim(); i++) {
+            (*this)(i,i) = mtx(i,i);
+        }
+    }
+
+    template <typename T>
+    void Binary<T>::operator = (Matrix<T> mtx)
+    {
+        binaryCheck(mtx);
+
+        (*this).newSize(mtx.rows(),mtx.cols());
+        (*this).dynamic(mtx.drows(),mtx.dcols());
+
+        auto it=mtx.begin();
+        for (auto e=(*this).begin(); e != (*this).end(); e++) {
+            *e = *(it++);
+        }
+    }
+
+    template <typename T>
+    void Vector<T>::operator = (Matrix<T> mtx)
+    {
+        if ((std::min(mtx.rows(), mtx.cols()) != 1) && mtx.rows() != 0) {
+            throw std::invalid_argument("Invalid Argument");
+        }
+
+        row = mtx.rows() >= mtx.cols() ? 0 : 1;
+
+        (*this).newSize(std::max(mtx.rows(), mtx.cols()));
+        (*this).dynamic(mtx.drows(),mtx.dcols());
+
+        auto it=mtx.begin();
+        for (auto e=(*this).begin(); e != (*this).end(); e++) {
+            *e = *(it++);
+        }
+    }
 }

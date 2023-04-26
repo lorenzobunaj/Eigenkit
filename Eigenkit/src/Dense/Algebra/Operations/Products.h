@@ -1,13 +1,13 @@
 namespace ek
 {
     template <typename T>
-    Matrix<T> Matrix<T>::operator * (T scl)
+    Matrix<T> operator * (Matrix<T> op, T scl)
     {
-        Matrix<T> out((*this).rows(), (*this).cols());
+        Matrix<T> out(op.rows(), op.cols());
 
-        auto op = (*this).begin();
+        auto it = op.begin();
         for (auto e = out.begin(); e != out.end(); e++) {
-            *e = *(op++) * scl;
+            *e = *(it++) * scl;
         }
 
         return out;

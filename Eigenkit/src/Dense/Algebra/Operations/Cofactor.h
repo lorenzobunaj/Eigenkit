@@ -6,7 +6,7 @@ namespace ek
         return std::pow(-1, ir+ic)*(*this).minor(ir,ic);
     }
     template <typename T>
-    Matrix<T> Matrix<T>::cofMatrix()
+    Matrix<T> Matrix<T>::cofactors()
     {
         Matrix<T> out((*this).rows(), (*this).cols());
 

@@ -4,7 +4,7 @@ namespace ek {
     {
     private:
         // check whether a(i,j) = 0 if i != j
-        void diagonalCheck (Squared<T> mtx)
+        void diagonalCheck (Matrix<T> mtx)
         {
             for (size_t i=0;i<mtx.rows();i++) {
                 for (size_t j=0;j<mtx.cols();j++) {
@@ -46,7 +46,6 @@ namespace ek {
         // can modify only elements on the diagonal
         T& operator () (size_t ir, size_t ic)
         {
-            std::vector<std::vector<T>> matrix = (*this).getMatrix();
 
             if (ir >= (*this).dim() || ic >= (*this).dim()) {
                 if (ir != ic) {
@@ -55,9 +54,11 @@ namespace ek {
                 (*this).newSize(std::max(ir+1, ic+1));
             }
 
-            if (ir != ic) {return matrix[ir][ic];}
+            if (ir != ic) {return (*this).mtx()[ir][ic];}
 
             return (*this).getMatrix()[ir][ic];
         }
+
+        void operator = (Matrix<T>);
     };
 }

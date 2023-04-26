@@ -32,11 +32,11 @@ namespace ek
         Matrix<T> sub(size_t, size_t, size_t, size_t);
         Matrix<T> sub(size_t, size_t);
 
-        Matrix<T> operator + (Matrix<T>);
-        Matrix<T> operator + (T);
-        Matrix<T> operator - (Matrix<T>);
-        Matrix<T> operator - (T);
-        Matrix<T> operator * (T);
+        //Matrix<T> operator + (Matrix<T>);
+        //Matrix<T> operator + (T);
+        //Matrix<T> operator - (Matrix<T>);
+        //Matrix<T> operator - (T);
+        //Matrix<T> operator * (T);
         void operator += (Matrix<T>);
         void operator += (T);
         void operator -= (Matrix<T>);
@@ -51,7 +51,10 @@ namespace ek
         T det();
         T minor(size_t, size_t);
         T cof(size_t, size_t);
-        Matrix<T> cofMatrix();
+        Matrix<T> cofactors();
         Matrix<T> inverse();
+        T sum();
+        T max();
+        T min();
     };
 }
