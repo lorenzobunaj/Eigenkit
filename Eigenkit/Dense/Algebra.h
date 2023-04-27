@@ -12,6 +12,8 @@
 #include "../src/Dense/Algebra/Operations/Inverse.h"
 #include "../src/Dense/Algebra/Reductions/Sum.h"
 #include "../src/Dense/Algebra/Reductions/MaxMin.h"
+#include "../src/Dense/Algebra/Transformations/Transformation.h"
 #include "../src/Dense/Algebra/Transformations/Householder.h"
 #include "../src/Dense/Algebra/Transformations/Jacobi.h"
 #include "../src/Dense/Algebra/Transformations/Givens.h"
+#include "../src/Dense/Algebra/Transformations/Gram.h"

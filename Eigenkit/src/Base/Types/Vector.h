@@ -64,7 +64,10 @@ namespace ek {
         }
 
         void operator = (Matrix<T>);
-        //Vector<T> operator - (Vector<T>);
+        Vector<T> operator + (T scl);
+        Vector<T> operator - (T scl);
+        Vector<T> operator * (T scl);
+
         // overload t function
         // change row parameter
         Vector<T> t()
@@ -93,5 +96,12 @@ namespace ek {
         T dot(Vector<T>);
         Vector<T> cross(Vector<T>);
         Matrix<T> outer(Vector<T>);
+
+        Vector<T> proj(Vector<T> op2)
+        {
+            Vector<T> op1 = *this;
+
+            return op2 * (op1.dot(op2.t())/op2.dot(op2.t()));
+        }
     };
 }

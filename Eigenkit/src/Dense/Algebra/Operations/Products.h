@@ -1,8 +1,10 @@
 namespace ek
 {
     template <typename T>
-    Matrix<T> operator * (Matrix<T> op, T scl)
+    Matrix<T> Matrix<T>::operator * (T scl)
     {
+        Matrix<T> op = *this;
+
         Matrix<T> out(op.rows(), op.cols());
 
         auto it = op.begin();
@@ -12,7 +14,6 @@ namespace ek
 
         return out;
     }
-
     template <typename T>
     Matrix<T> operator * (T scl, Matrix<T> mtx)
     {
@@ -30,12 +31,27 @@ namespace ek
 
         for (size_t i=0;i<op1.rows();i++) {
             for(size_t j=0;j<op2.cols();j++) {
+                out(i,j) = 0;
                 for(size_t k=0;k<op1.cols();k++) {
-                    out(i,j) = 0;
                     out(i,j) += op1(i,k)*op2(k,j);
                 }
             }
         }
+        return out;
+    }
+
+    template <typename T>
+    Vector<T> Vector<T>::operator * (T scl)
+    {
+        Vector<T> op = *this;
+
+        Vector<T> out(op.dim(), (*this).row);
+
+        auto it = op.begin();
+        for (auto e = out.begin(); e != out.end(); e++) {
+            *e = *(it++) * scl;
+        }
+
         return out;
     }
 

@@ -1,6 +1,26 @@
 namespace ek
 {
     template <typename T>
+    Matrix<T> Matrix<T>::operator + (T scl)
+    {
+        Matrix<T> op = *this;
+
+        Matrix<T> out(op.rows(), op.cols());
+
+        auto it = op.begin();
+        for (auto e = out.begin(); e != out.end(); e++) {
+            *e = *(it++) + scl;
+        }
+
+        return out;
+    }
+    template <typename T>
+    Matrix<T> Matrix<T>::operator - (T scl)
+    {
+        return (*this + (-scl));
+    }
+
+    template <typename T>
     Matrix<T> operator + (Matrix<T> op1, Matrix<T> op2)
     {
         if ((op1.rows() != op2.rows())||(op1.cols() != op2.cols())) {
@@ -18,19 +38,6 @@ namespace ek
         return out;
     }
     template <typename T>
-    Matrix<T> operator + (Matrix<T> op, T scl)
-    {
-        Matrix<T> out(op.rows(), op.cols());
-
-        auto it = op.begin();
-        for (auto e = out.begin(); e != out.end(); e++) {
-            *e = *(it++) + scl;
-        }
-
-        return out;
-    }
-
-    template <typename T>
     Matrix<T> operator - (Matrix<T> op1, Matrix<T> op2)
     {
         if ((op1.rows() != op2.rows())||(op1.cols() != op2.cols())) {
@@ -47,10 +54,25 @@ namespace ek
 
         return out;
     }
+
     template <typename T>
-    Matrix<T> operator - (Matrix<T> op, T scl)
+    Vector<T> Vector<T>::operator + (T scl)
     {
-        return (op + (-scl));
+        Vector<T> op = *this;
+
+        Vector<T> out(op.dim(), (*this).row);
+
+        auto it = op.begin();
+        for (auto e = out.begin(); e != out.end(); e++) {
+            *e = *(it++) + scl;
+        }
+
+        return out;
+    }
+    template <typename T>
+    Vector<T> Vector<T>::operator - (T scl)
+    {
+        return (*this + (-scl));
     }
 
     template <typename T>

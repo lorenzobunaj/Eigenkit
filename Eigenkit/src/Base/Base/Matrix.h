@@ -32,11 +32,9 @@ namespace ek
         Matrix<T> sub(size_t, size_t, size_t, size_t);
         Matrix<T> sub(size_t, size_t);
 
-        //Matrix<T> operator + (Matrix<T>);
-        //Matrix<T> operator + (T);
-        //Matrix<T> operator - (Matrix<T>);
-        //Matrix<T> operator - (T);
-        //Matrix<T> operator * (T);
+        Matrix<T> operator + (T);
+        Matrix<T> operator - (T);
+        Matrix<T> operator * (T);
         void operator += (Matrix<T>);
         void operator += (T);
         void operator -= (Matrix<T>);
