@@ -97,6 +97,8 @@ namespace ek {
         Vector<T> cross(Vector<T>);
         Matrix<T> outer(Vector<T>);
 
+        T norm(T);
+
         Vector<T> proj(Vector<T> op2)
         {
             Vector<T> op1 = *this;

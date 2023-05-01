@@ -52,6 +52,8 @@ namespace ek
         Matrix<T> cofactors();
         Matrix<T> inverse();
         T sum();
+        T prod();
+        T mean();
         T max();
         T min();
     };
