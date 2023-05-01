@@ -15,8 +15,3 @@
 #include "../src/Dense/Algebra/Reductions/Mean.h"
 #include "../src/Dense/Algebra/Reductions/VectorNorm.h"
 #include "../src/Dense/Algebra/Reductions/MaxMin.h"
-#include "../src/Dense/Algebra/Transformations/Transformation.h"
-#include "../src/Dense/Algebra/Transformations/Householder.h"
-#include "../src/Dense/Algebra/Transformations/Jacobi.h"
-#include "../src/Dense/Algebra/Transformations/Givens.h"
-#include "../src/Dense/Algebra/Transformations/Gram.h"

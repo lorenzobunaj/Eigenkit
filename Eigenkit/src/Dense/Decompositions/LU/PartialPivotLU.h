@@ -1,7 +1,7 @@
 namespace ek
 {
     template <typename T>
-    class PartialPivot
+    class PartialPivotLU
     {
     private:
         std::vector<Matrix<T>> operators;
@@ -29,16 +29,10 @@ namespace ek
             }
 
             for (size_t j=0; j<U.cols()-1; j++) {
-                Vector<T> c = U.sub(j, j, U.rows()-1, U.cols()-1).t().mtx()[0];
-                for (size_t i=j; i<U.rows(); i++) {
-                    if (U(i,j) == c.max()) {
-                        Permutation<T> P(indSwap(ind,i,j));
-                        Li = P*Li;
-                        U = P*U;
-                        Pt = P*Pt;
-                        break;
-                    }
-                }
+                PartialPivot<T> P(U, j, ind);
+                Li = P*Li;
+                U = P*U;
+                Pt = P*Pt;
 
                 Matrix<T> M = id;
                 for (size_t i=j+1; i<U.cols();i++) {
@@ -57,7 +51,7 @@ namespace ek
         Matrix<T> L;
         Matrix<T> U;
 
-        PartialPivot(Matrix<T> mtx)
+        PartialPivotLU(Matrix<T> mtx)
         {
             operators = partialpivize(mtx);
             P = operators[0];
