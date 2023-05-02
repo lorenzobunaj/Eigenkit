@@ -92,6 +92,9 @@ namespace ek {
 
             return out;
         }
+
+        size_t maxPos();
+        size_t minPos();
         // implement products
         T dot(Vector<T>);
         Vector<T> cross(Vector<T>);

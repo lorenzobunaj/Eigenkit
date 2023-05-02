@@ -35,6 +35,16 @@ namespace ek
 
         return out;
     }
+    template <typename T>
+    Matrix<T> Matrix<T>::row(size_t r)
+    {
+        return (*this).sub(r,0,r,(*this).cols()-1);
+    }
+    template <typename T>
+    Matrix<T> Matrix<T>::col(size_t c)
+    {
+        return (*this).sub(0,c,(*this).rows()-1,c);
+    }
 
     template <typename T>
     bool subBorderCheck(Matrix<T> mtx, size_t ir, size_t ic, size_t fr, size_t fc)

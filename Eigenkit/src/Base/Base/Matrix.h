@@ -31,6 +31,8 @@ namespace ek
         void reshape(size_t);
         Matrix<T> sub(size_t, size_t, size_t, size_t);
         Matrix<T> sub(size_t, size_t);
+        Matrix<T> row(size_t);
+        Matrix<T> col(size_t);
 
         Matrix<T> operator + (T);
         Matrix<T> operator - (T);
@@ -56,5 +58,7 @@ namespace ek
         T mean();
         T max();
         T min();
+        std::vector<size_t> maxPos();
+        std::vector<size_t> minPos();
     };
 }

@@ -30,6 +30,7 @@ namespace ek
 
             for (size_t j=0; j<U.cols()-1; j++) {
                 PartialPivot<T> P(U, j, ind);
+
                 Li = P*Li;
                 U = P*U;
                 Pt = P*Pt;

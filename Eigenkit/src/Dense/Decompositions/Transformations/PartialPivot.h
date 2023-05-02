@@ -17,13 +17,9 @@ namespace ek
         {
             std::vector<std::vector<T>> out;
 
-            Vector<T> c = U.sub(ind, ind, U.rows()-1, U.cols()-1).t().mtx()[0];
-            for (size_t i=ind; i<U.rows(); i++) {
-                if (U(i,ind) == c.max()) {
-                    Permutation<T> P(indSwap(indices,i,ind));
-                    out = P.mtx();
-                }
-            }
+            size_t idx = ind + U.sub(ind,ind,U.rows()-1,ind).maxPos()[0];
+            Permutation<T> P(indSwap(indices,idx,ind));
+            out = P.mtx();
 
             return out;
         }
