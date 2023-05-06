@@ -13,7 +13,7 @@
 #include "../src/Dense/Decompositions/LU/LDLT.h"
 #include "../src/Dense/Decompositions/LU/LDU.h"
 #include "../src/Dense/Decompositions/QR/HouseHolderQR.h"
-#include "../src/Dense/Decompositions/QR/GramSchmidtQR.h"
+#include "../src/Dense/Decompositions/QR/GramQR.h"
 #include "../src/Dense/Decompositions/SVD/GolubKahanSVD.h"
 #include "../src/Dense/Decompositions/SVD/JacobiSVD.h"
 #include "../src/Dense/Decompositions/SVD/DCSVD.h"
