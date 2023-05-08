@@ -1,6 +1,0 @@
-#ifndef LDLTLU_H_INCLUDED
-#define LDLTLU_H_INCLUDED
-
-
-
-#endif // LDLTLU_H_INCLUDED
