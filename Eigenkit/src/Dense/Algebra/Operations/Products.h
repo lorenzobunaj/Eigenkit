@@ -41,6 +41,21 @@ namespace ek
     }
 
     template <typename T>
+    Matrix<T> Matrix<T>::operator / (T scl)
+    {
+        Matrix<T> op = *this;
+
+        Matrix<T> out(op.rows(), op.cols());
+
+        auto it = op.begin();
+        for (auto e = out.begin(); e != out.end(); e++) {
+            *e = *(it++) / scl;
+        }
+
+        return out;
+    }
+
+    template <typename T>
     Vector<T> Vector<T>::operator * (T scl)
     {
         Vector<T> op = *this;

@@ -1,12 +1,12 @@
 namespace ek
 {
     template <typename T>
-    class CholeskySRF
+    class CholeskyRF
     {
     private:
         std::vector<Matrix<T>> components;
 
-        std::vector<Matrix<T>> sfrcholeskize(Matrix<T> A)
+        std::vector<Matrix<T>> rcholeskize(Matrix<T> A)
         {
             Identity<T> id(A.rows());
             Matrix<T> L = id;
@@ -29,9 +29,9 @@ namespace ek
         Matrix<T> L;
         Matrix<T> D;
 
-        CholeskySRF(Matrix<T> mtx)
+        CholeskyRF(Matrix<T> mtx)
         {
-            components = sfrcholeskize(mtx);
+            components = rcholeskize(mtx);
             A = mtx;
             L = components[0];
             D = components[1];

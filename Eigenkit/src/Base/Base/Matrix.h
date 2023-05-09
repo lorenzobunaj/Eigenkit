@@ -37,6 +37,7 @@ namespace ek
         Matrix<T> operator + (T);
         Matrix<T> operator - (T);
         Matrix<T> operator * (T);
+        Matrix<T> operator / (T);
         void operator += (Matrix<T>);
         void operator += (T);
         void operator -= (Matrix<T>);
