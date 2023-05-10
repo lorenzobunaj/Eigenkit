@@ -17,6 +17,5 @@
 #include "../src/Dense/Decompositions/QR/FullPivotQR.h"
 #include "../src/Dense/Decompositions/QR/GivensQR.h"
 #include "../src/Dense/Decompositions/QR/GramQR.h"
-#include "../src/Dense/Decompositions/SVD/GolubSVD.h"
 #include "../src/Dense/Decompositions/SVD/JacobiSVD.h"
 #include "../src/Dense/Decompositions/SVD/DCSVD.h"
