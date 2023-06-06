@@ -1,6 +1,7 @@
 #include "../src/Dense/Decompositions/Transformations/Transformation.h"
 #include "../src/Dense/Decompositions/Transformations/Elimination.h"
 #include "../src/Dense/Decompositions/Transformations/PartialPivot.h"
+#include "../src/Dense/Decompositions/Transformations/ColPivot.h"
 #include "../src/Dense/Decompositions/Transformations/FullPivot.h"
 #include "../src/Dense/Decompositions/Transformations/Householder.h"
 #include "../src/Dense/Decompositions/Transformations/Jacobi.h"

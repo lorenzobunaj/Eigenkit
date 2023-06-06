@@ -60,8 +60,10 @@ namespace ek
         T max();
         T absMax();
         T min();
+        T absMin();
         std::vector<size_t> maxPos(std::vector<T> na={});
         std::vector<size_t> absMaxPos(std::vector<T> na={});
         std::vector<size_t> minPos();
+        std::vector<size_t> absMinPos(std::vector<T> na={});
     };
 }

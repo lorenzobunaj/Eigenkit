@@ -73,7 +73,7 @@ namespace ek
     template <typename T>
     T Vector<T>::dot (Vector<T> vec)
     {
-        return ((*this)*vec)(0,0);
+        return ((*this).t()*vec)(0,0);
     }
 
     template <typename T>

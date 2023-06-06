@@ -6,56 +6,45 @@ namespace ek
     private:
         std::vector<Matrix<T>> operators;
 
-        Vector<T> colonize(Matrix<T> A, T j)
-        {
-            std::vector<T> el;
-            el.resize(A.rows());
-            for (size_t i=0; i<A.rows(); i++) {
-                el[i] = A(i,j);
-            }
-
-            Vector<T> out(el);
-            return out;
-        }
-
-        std::vector<Matrix<T>> houseize(Matrix<T> A)
+        std::vector<Matrix<T>> householderize(Matrix<T> A)
         {
             Identity<T> id(A.rows());
             Matrix<T> Q = id;
-            Matrix<T> R = A;
-            Matrix<T> Aj = A;
-            Vector<T> v;
+            Matrix<T> Rc = A;
+            Matrix<T> R = Rc;
+            Matrix<T> Hc;
 
-            for (size_t j=0; j<A.cols(); j++) {
-                Vector<T> a = colonize(Aj,0);
-                Vector<T> e(Aj.rows(),1);
-                e(0) = 1;
+            Vector<T> v(0);
+            Vector<T> a(0);
+            Vector<T> e(A.rows(), 0);
+            e(0) = 1;
 
-                v = a + std::sqrt(std::pow(a(0),2))/a(0) * a.norm(2) * e;
+            for (size_t i=0; i<std::min(A.rows(), A.cols()); i++) {
+                a = R.col(0);
+                e.newSize(R.rows());
+                v = a + (a(0)/std::abs(a(0)))* a.norm(2)*e;
 
                 Householder<T> H(v);
 
-                Matrix<T> Ht = id;
-                if (H.rows() < A.rows()) {
+                R = H*R;
+                if (i<std::min(A.rows(), A.cols())-1) {
+                    R = R.sub(1,1,R.rows()-1, R.cols()-1);
+                }
 
-                    for (size_t k=0; k<A.rows(); k++) {
-                        for (size_t s=0; s<A.rows(); s++) {
-                            if ((k >= j) && (s >= j)) {
-                                Ht(k,s) = H(k-j,s-j);
-                            }
+                Hc = id;
+                for (size_t j=0; j<Rc.rows(); j++) {
+                    for (size_t s=0; s<Rc.cols(); s++) {
+                        if ((j>=i) && (s>=i)) {
+                            Hc(j,s) = H(j-i,s-i);
                         }
                     }
                 }
 
-                Q = j==0? Q*H : Q*Ht;
-                R = j==0? H*R : Ht*R;
-
-                if (j<A.cols()-1) {
-                    Aj = (H*Aj).sub(1,1,Aj.rows()-1,Aj.cols()-1);
-                }
+                Q = Q*Hc;
+                Rc = Hc*Rc;
             }
 
-            return {Q,R};
+            return {Q, Rc};
         }
     public:
         Matrix<T> A;
@@ -64,7 +53,7 @@ namespace ek
 
         HouseholderQR(Matrix<T> mtx)
         {
-            operators = houseize(mtx);
+            operators = householderize(mtx);
             A = mtx;
             Q = operators[0];
             R = operators[1];

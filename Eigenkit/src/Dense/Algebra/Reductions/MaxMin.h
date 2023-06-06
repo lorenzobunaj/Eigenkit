@@ -31,6 +31,16 @@ namespace ek
         return m;
     }
     template <typename T>
+    T Matrix<T>::absMin()
+    {
+        T m=*((*this).begin());
+        for (auto it=(*this).begin(); it!=(*this).end(); it++) {
+            m = std::min(std::abs(m), std::abs(*it));
+        }
+
+        return m;
+    }
+    template <typename T>
     std::vector<size_t> Matrix<T>::maxPos(std::vector<T> na)
     {
         std::vector<size_t> null;
@@ -88,6 +98,28 @@ namespace ek
                 if ((*this)(i,j) < (*this)(mr,mc)) {
                     mr = i;
                     mc = j;
+                }
+            }
+        }
+
+        return {mr,mc};
+    }
+    template <typename T>
+    std::vector<size_t> Matrix<T>::absMinPos(std::vector<T> na)
+    {
+        std::vector<size_t> null;
+        if ((*this).rows() == 0) {return null;}
+
+        size_t mr=0;
+        size_t mc=0;
+
+        for (size_t i=0; i<(*this).rows();i++) {
+            for (size_t j=0; j<(*this).cols();j++) {
+                if (std::abs((*this)(i,j)) < std::abs((*this)(mr,mc))) {
+                    if (!(std::find(na.begin(), na.end(), (*this)(i,j)) != na.end())) {
+                        mr = i;
+                        mc = j;
+                    }
                 }
             }
         }
