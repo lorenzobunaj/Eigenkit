@@ -23,7 +23,9 @@ namespace ek
             for (size_t j=1;j<A.cols();j++) {
                 Vector<T> v;
                 v = A.col(j);
-                if (v.norm(2) == 0) {return error;}
+                if (v.norm(2) == 0) {
+                    throw std::invalid_argument("Invalid Arguments");
+                }
                 else if (v.norm(2) > norm) {
                     norm = v.norm(2);
                     sc = j;

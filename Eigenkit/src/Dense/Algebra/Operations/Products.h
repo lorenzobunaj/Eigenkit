@@ -73,7 +73,16 @@ namespace ek
     template <typename T>
     T Vector<T>::dot (Vector<T> vec)
     {
-        return ((*this).t()*vec)(0,0);
+        if ((*this).dim() != vec.dim()) {
+            throw std::invalid_argument("Invalid Arguments");
+        }
+
+        T out = 0;
+        auto it = (*this).begin();
+        for (auto e=vec.begin(); e!=vec.end(); e++) {
+            out += (*(it++))*(*e);
+        }
+        return out;
     }
 
     template <typename T>

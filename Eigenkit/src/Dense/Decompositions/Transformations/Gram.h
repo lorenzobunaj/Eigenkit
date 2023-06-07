@@ -9,18 +9,21 @@ namespace ek
             std::vector<std::vector<T>> out;
             if (mtx.rows() == 0) {return out;}
 
-            std::vector<std::vector<T>> arr = mtx.mtx();
+            std::vector<std::vector<T>> arr = mtx.t().mtx();
 
-            out.resize(mtx.rows());
+            out.resize(mtx.cols());
 
-            for (size_t i=0; i<mtx.rows(); i++) {
-                out.resize(mtx.cols());
-                Vector<T> op1 = arr[i];
-                Vector<T> res = op1;
+            for (size_t i=0; i<mtx.cols(); i++) {
+                out[i].resize(mtx.rows());
+
+                Vector<T> a = arr[i];
+                Vector<T> res = a;
 
                 for (size_t j=0; j<i; j++) {
-                    Vector<T> temp = arr[j];
-                    res = res - op1.proj(temp);
+                    Vector<T> u = out[j];
+                    Vector<T> e;
+                    e = u/u.norm(2);
+                    res = res - e*(a.dot(e));
                 }
 
                 out[i] = res.mtx()[0];

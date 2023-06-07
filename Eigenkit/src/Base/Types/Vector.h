@@ -20,7 +20,7 @@ namespace ek {
 
     public:
         // default constructors
-        Vector(bool r) : Matrix<T>(){
+        Vector(size_t r=1) : Matrix<T>(){
             row = r;
         };
         Vector(size_t s, bool r) : Matrix<T>(r == 1 ? 1 : s,r == 0 ? 1 : s){
