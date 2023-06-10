@@ -1,32 +1,33 @@
-namespace ek
+ namespace ek
 {
     template <typename T>
     class Gram : public Transformation<T>
     {
     private:
-        std::vector<std::vector<T>> gramize(Matrix<T> mtx)
+        // converts the constructor inputs to an array
+        std::vector<std::vector<T>> gramize(Matrix<T> A)
         {
             std::vector<std::vector<T>> out;
-            if (mtx.rows() == 0) {return out;}
+            out.resize(A.cols());
+            // find the A.t() associated array
+            std::vector<std::vector<T>> arr = A.t().mtx();
 
-            std::vector<std::vector<T>> arr = mtx.t().mtx();
-
-            out.resize(mtx.cols());
-
-            for (size_t i=0; i<mtx.cols(); i++) {
-                out[i].resize(mtx.rows());
-
+            for (size_t i=0; i<A.cols(); i++) {
+                out[i].resize(A.rows());
                 Vector<T> a = arr[i];
-                Vector<T> res = a;
-
+                // let r = a;
+                Vector<T> r = a;
+                // scroll through the previous r out(j);
                 for (size_t j=0; j<i; j++) {
+                    // let u = out(j) and e = u/|u|
                     Vector<T> u = out[j];
                     Vector<T> e;
                     e = u/u.norm(2);
-                    res = res - e*(a.dot(e));
+                    // r = a - e(0)*(a.dot(e(0))) - ... - e(i-1)*(a.dot(e(i-1)))
+                    r = r - e*(a.dot(e));
                 }
-
-                out[i] = res.mtx()[0];
+                // out(i) = r
+                out[i] = r.mtx()[0];
             }
 
             return out;

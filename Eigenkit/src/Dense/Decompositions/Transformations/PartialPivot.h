@@ -4,27 +4,29 @@ namespace ek
     class PartialPivot : public Transformation<T>
     {
     private:
-        Matrix<T> indSwap (Matrix<T> mtx, size_t i, size_t j)
+        // swaps elements in the 2nd row of a matrix
+        Matrix<T> indSwap (Matrix<T> A, size_t i, size_t j)
         {
-            T temp = mtx(1,i);
-            mtx(1,i) = mtx(1,j);
-            mtx(1,j) = temp;
+            T temp = A(1,i);
+            A(1,i) = A(1,j);
+            A(1,j) = temp;
 
-            return mtx;
+            return A;
         }
-
-        std::vector<std::vector<T>> partialpivize(Matrix<T> U, size_t j, Matrix<T> indices)
+        // converts the constructor inputs to an array
+        std::vector<std::vector<T>> partialpivize(Matrix<T> A, Matrix<T> indices, size_t j)
         {
             std::vector<std::vector<T>> out;
+            // find imax : jmax = argmax(A(i,j))
+            size_t imax = j + A.col(j).absMaxPos()[0];
+            // initialize permutation matrix P : PA swaps rows and AP swap columns
+            Permutation<T> P(indSwap(indices,imax,j));
 
-            size_t sr = j + U.sub(j,j,U.rows()-1,j).absMaxPos()[0];
-            Permutation<T> P(indSwap(indices,sr,j));
             out = P.mtx();
-
             return out;
         }
     public:
         // special constructor
-        PartialPivot(Matrix<T> mtx, size_t j, Matrix<T> indices) : Transformation<T>(partialpivize(mtx, j, indices)){};
+        PartialPivot(Matrix<T> A, Matrix<T> indices, size_t j) : Transformation<T>(partialpivize(A, indices, j)){};
     };
 }

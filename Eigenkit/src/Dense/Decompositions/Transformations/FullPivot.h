@@ -4,24 +4,25 @@ namespace ek
     class FullPivot
     {
     private:
-        Matrix<T> indSwap (Matrix<T> mtx, size_t i, size_t j)
+        // swaps elements in the 2nd row of a matrix
+        Matrix<T> indSwap (Matrix<T> A, size_t i, size_t j)
         {
-            T temp = mtx(1,i);
-            mtx(1,i) = mtx(1,j);
-            mtx(1,j) = temp;
+            T temp = A(1,i);
+            A(1,i) = A(1,j);
+            A(1,j) = temp;
 
-            return mtx;
+            return A;
         }
-
-        std::vector<Matrix<T>> fullpivize(Matrix<T> U, size_t j, Matrix<T> indices)
+        // converts the constructor inputs to an array
+        std::vector<Matrix<T>> fullpivize(Matrix<T> A, size_t j, Matrix<T> indices)
         {
-            std::vector<size_t> s = U.sub(j,j,U.rows()-1,U.cols()-1).absMaxPos();
-
-            Permutation<T> P(indSwap(indices, j, s[0]+j));
-            Permutation<T> Q(indSwap(indices, j, s[1]+j));
+            // find pmax : pmax = argmax(A(x,y))
+            std::vector<size_t> pmax = A.sub(j,j,A.rows()-1,A.cols()-1).absMaxPos();
+            // initialize permutation matrices M : MA swaps rows and AM swap columns
+            Permutation<T> P(indSwap(indices, j, pmax[0]+j));
+            Permutation<T> Q(indSwap(indices, j, pmax[1]+j));
 
             std::vector<Matrix<T>> out = {P,Q};
-
             return out;
         }
     public:
@@ -29,10 +30,9 @@ namespace ek
         Matrix<T> Q;
 
         // special constructor
-        FullPivot(Matrix<T> mtx, size_t j, Matrix<T> indices)
+        FullPivot(Matrix<T> A, size_t j, Matrix<T> indices)
         {
-            std::vector<Matrix<T>> components = fullpivize(mtx, j, indices);
-
+            std::vector<Matrix<T>> components = fullpivize(A, j, indices);
             P = components[0];
             Q = components[1];
         }

@@ -24,7 +24,7 @@ namespace ek
                     break;
                 }
 
-                PartialPivot<T> P(U, j, ind);
+                PartialPivot<T> P(U.sub(j,j,U.rows()-1,U.cols()-1), j, ind);
                 U = P*U;
                 Pt = P*Pt;
                 Li = P*Li;
