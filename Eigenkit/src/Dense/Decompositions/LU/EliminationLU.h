@@ -5,15 +5,15 @@ namespace ek
     {
     private:
         std::vector<Matrix<T>> operators;
-
+        // converts the constructor inputs to a vector of matrices
         std::vector<Matrix<T>> eliminize(Matrix<T> A)
         {
             Identity<T> id(A.rows());
-
             Matrix<T> U = A;
             Matrix<T> Li = id;
 
             for (size_t j=0; j<U.cols()-1; j++) {
+                // perform Gaussian Elimination on the j-th column
                 Elimination<T> M(U,j);
                 U = M*U;
                 Li = M*Li;
@@ -26,10 +26,11 @@ namespace ek
         Matrix<T> L;
         Matrix<T> U;
 
-        EliminationLU(Matrix<T> mtx)
+        // special constructor
+        EliminationLU(Matrix<T> M)
         {
-            operators = eliminize(mtx);
-            A = mtx;
+            operators = eliminize(M);
+            A = M;
             L = operators[0];
             U = operators[1];
         };

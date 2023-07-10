@@ -1,5 +1,6 @@
 namespace ek
 {
+    // overloaded assignment operators
     template <typename T>
     void Matrix<T>::operator += (Matrix<T> mtx)
     {

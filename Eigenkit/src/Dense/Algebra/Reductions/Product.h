@@ -1,5 +1,6 @@
 namespace ek
 {
+    // find the value of the product of each element
     template <typename T>
     T Matrix<T>::prod()
     {

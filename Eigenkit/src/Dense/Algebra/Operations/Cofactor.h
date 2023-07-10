@@ -1,10 +1,12 @@
 namespace ek
 {
+    // finds the (i,j)-th cofactor
     template <typename T>
     T Matrix<T>::cof(size_t ir, size_t ic)
     {
         return std::pow(-1, ir+ic)*(*this).minor(ir,ic);
     }
+    // finds the cofactors matrix
     template <typename T>
     Matrix<T> Matrix<T>::cofactors()
     {

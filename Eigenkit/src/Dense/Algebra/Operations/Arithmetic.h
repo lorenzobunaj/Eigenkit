@@ -1,5 +1,6 @@
 namespace ek
 {
+    // sum operation between a matrix and a scalar
     template <typename T>
     Matrix<T> Matrix<T>::operator + (T scl)
     {
@@ -14,12 +15,13 @@ namespace ek
 
         return out;
     }
+    // subtraction operation between a matrix and a scalar
     template <typename T>
     Matrix<T> Matrix<T>::operator - (T scl)
     {
         return (*this + (-scl));
     }
-
+    // sum operation between 2 matrices
     template <typename T>
     Matrix<T> operator + (Matrix<T> op1, Matrix<T> op2)
     {
@@ -37,6 +39,7 @@ namespace ek
 
         return out;
     }
+    // subtraction operation between 2 matrices
     template <typename T>
     Matrix<T> operator - (Matrix<T> op1, Matrix<T> op2)
     {
@@ -54,7 +57,7 @@ namespace ek
 
         return out;
     }
-
+    // sum operation between a vector and a scalar
     template <typename T>
     Vector<T> Vector<T>::operator + (T scl)
     {
@@ -69,12 +72,13 @@ namespace ek
 
         return out;
     }
+    // subtraction operation between a vector and a scalar
     template <typename T>
     Vector<T> Vector<T>::operator - (T scl)
     {
         return (*this + (-scl));
     }
-
+    // sum operation between 2 vectors
     template <typename T>
     Vector<T> operator + (Vector<T> op1, Vector<T> op2)
     {
@@ -86,16 +90,7 @@ namespace ek
 
         return out;
     }
-    template <typename T>
-    Vector<T> operator + (Vector<T> op1, T scl)
-    {
-        Vector<T> out;
-
-        Matrix<T> mtx1 = op1;
-        out = mtx1 + scl;
-
-        return out;
-    }
+    // subtraction operation between 2 vectors
     template <typename T>
     Vector<T> operator - (Vector<T> op1, Vector<T> op2)
     {
@@ -104,6 +99,16 @@ namespace ek
         Matrix<T> mtx1 = op1;
         Matrix<T> mtx2 = op2;
         out = mtx1 - mtx2;
+
+        return out;
+    }
+    /*template <typename T>
+    Vector<T> operator + (Vector<T> op1, T scl)
+    {
+        Vector<T> out;
+
+        Matrix<T> mtx1 = op1;
+        out = mtx1 + scl;
 
         return out;
     }
@@ -116,5 +121,5 @@ namespace ek
         out = mtx1 - scl;
 
         return out;
-    }
+    }*/
 }

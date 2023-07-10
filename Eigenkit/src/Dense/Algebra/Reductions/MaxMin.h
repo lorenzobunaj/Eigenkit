@@ -1,5 +1,6 @@
 namespace ek
 {
+    // finds the max element
     template <typename T>
     T Matrix<T>::max()
     {
@@ -10,6 +11,7 @@ namespace ek
 
         return M;
     }
+    // finds the farthest element from 0
     template <typename T>
     T Matrix<T>::absMax()
     {
@@ -20,6 +22,7 @@ namespace ek
 
         return M;
     }
+    // finds the min element
     template <typename T>
     T Matrix<T>::min()
     {
@@ -30,6 +33,7 @@ namespace ek
 
         return m;
     }
+    // finds the closest element to 0
     template <typename T>
     T Matrix<T>::absMin()
     {
@@ -40,6 +44,7 @@ namespace ek
 
         return m;
     }
+    // finds the max element's position
     template <typename T>
     std::vector<size_t> Matrix<T>::maxPos(std::vector<T> na)
     {
@@ -62,8 +67,9 @@ namespace ek
 
         return {Mr,Mc};
     }
+    // finds the position of the farthest element from 0
     template <typename T>
-    std::vector<size_t> Matrix<T>::absMaxPos(std::vector<T> na)
+    std::vector<size_t> Matrix<T>::absMaxPos()
     {
         std::vector<size_t> null;
         if ((*this).rows() == 0) {return null;}
@@ -74,16 +80,19 @@ namespace ek
         for (size_t i=0; i<(*this).rows();i++) {
             for (size_t j=0; j<(*this).cols();j++) {
                 if (std::abs((*this)(i,j)) > std::abs((*this)(Mr,Mc))) {
-                    if (!(std::find(na.begin(), na.end(), (*this)(i,j)) != na.end())) {
+                    /*if (!(std::find(na.begin(), na.end(), (*this)(i,j)) != na.end())) {
                         Mr = i;
                         Mc = j;
-                    }
+                    }*/
+                    Mr = i;
+                    Mc = j;
                 }
             }
         }
 
         return {Mr,Mc};
     }
+    // finds the min element's position
     template <typename T>
     std::vector<size_t> Matrix<T>::minPos()
     {
@@ -104,8 +113,9 @@ namespace ek
 
         return {mr,mc};
     }
+    // finds the position of the closest element from 0
     template <typename T>
-    std::vector<size_t> Matrix<T>::absMinPos(std::vector<T> na)
+    std::vector<size_t> Matrix<T>::absMinPos()
     {
         std::vector<size_t> null;
         if ((*this).rows() == 0) {return null;}
@@ -116,16 +126,19 @@ namespace ek
         for (size_t i=0; i<(*this).rows();i++) {
             for (size_t j=0; j<(*this).cols();j++) {
                 if (std::abs((*this)(i,j)) < std::abs((*this)(mr,mc))) {
-                    if (!(std::find(na.begin(), na.end(), (*this)(i,j)) != na.end())) {
+                    /*if (!(std::find(na.begin(), na.end(), (*this)(i,j)) != na.end())) {
                         mr = i;
                         mc = j;
-                    }
+                    }*/
+                    mr = i;
+                    mc = j;
                 }
             }
         }
 
         return {mr,mc};
     }
+    // find the max element's position in a vector
     template <typename T>
     size_t Vector<T>::maxPos()
     {
@@ -141,6 +154,23 @@ namespace ek
 
         return Mp;
     }
+    // finds the position of the farthest element from 0 in a vector
+    template <typename T>
+    size_t Vector<T>::absMaxPos()
+    {
+        size_t null;
+        if ((*this).dim() == 0) {return null;}
+
+        size_t Mp=0;
+        for (size_t i=0; i<(*this).dim(); i++) {
+            if (std::abs((*this)(i)) > std::abs((*this)(Mp))) {
+                Mp = i;
+            }
+        }
+
+        return Mp;
+    }
+    // find the min element's position in a vector
     template <typename T>
     size_t Vector<T>::minPos()
     {
@@ -150,6 +180,22 @@ namespace ek
         size_t mp=0;
         for (size_t i=0; i<(*this).dim(); i++) {
             if ((*this)(i) > (*this)(mp)) {
+                mp = i;
+            }
+        }
+
+        return mp;
+    }
+    // finds the position of the closest element to 0 in a vector
+    template <typename T>
+    size_t Vector<T>::absMinPos()
+    {
+        size_t null;
+        if ((*this).dim() == 0) {return null;}
+
+        size_t mp=0;
+        for (size_t i=0; i<(*this).dim(); i++) {
+            if (std::abs((*this)(i)) < std::abs((*this)(mp))) {
                 mp = i;
             }
         }

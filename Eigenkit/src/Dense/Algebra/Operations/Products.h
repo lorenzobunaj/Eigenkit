@@ -1,5 +1,6 @@
 namespace ek
 {
+    // product between a matrix and a scalar (type-independent)
     template <typename T>
     Matrix<T> Matrix<T>::operator * (T scl)
     {
@@ -14,12 +15,13 @@ namespace ek
 
         return out;
     }
+    // product between a scalar and a matrix
     template <typename T>
     Matrix<T> operator * (T scl, Matrix<T> mtx)
     {
         return (mtx * scl);
     }
-
+    // matrices product
     template <typename T>
     Matrix<T> operator * (Matrix<T> op1, Matrix<T> op2)
     {
@@ -39,7 +41,7 @@ namespace ek
         }
         return out;
     }
-
+    // division between a matrix and a scalar
     template <typename T>
     Matrix<T> Matrix<T>::operator / (T scl)
     {
@@ -54,7 +56,7 @@ namespace ek
 
         return out;
     }
-
+    // product between a vector and a scalar
     template <typename T>
     Vector<T> Vector<T>::operator * (T scl)
     {
@@ -69,7 +71,7 @@ namespace ek
 
         return out;
     }
-
+    // dot product
     template <typename T>
     T Vector<T>::dot (Vector<T> vec)
     {
@@ -84,7 +86,7 @@ namespace ek
         }
         return out;
     }
-
+    // cross product
     template <typename T>
     Vector<T> Vector<T>::cross (Vector<T> vec)
     {
@@ -100,7 +102,7 @@ namespace ek
 
         return out;
     }
-
+    // outer product
     template <typename T>
     Matrix<T> Vector<T>::outer (Vector<T> vec)
     {

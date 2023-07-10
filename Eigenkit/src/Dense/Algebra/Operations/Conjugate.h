@@ -1,5 +1,6 @@
 namespace ek
 {
+    // finds the conjugate matrix
     template <typename T>
     Matrix<T> Matrix<T>::c()
     {
@@ -12,7 +13,7 @@ namespace ek
 
         return out;
     }
-
+    // finds the transposed and conjugate matrix
     template <typename T>
     Matrix<T> Matrix<T>::h()
     {

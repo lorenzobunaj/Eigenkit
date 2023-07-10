@@ -3,6 +3,7 @@ namespace ek
     template <typename T>
     T Matrix<T>::det()
     {
+        // find determinant with Laplace method
         if (((*this).rows() != (*this).cols()) || ((*this).rows() == 0)) {
             throw std::invalid_argument("Invalid Argument");
         } else if ((*this).rows() == 1) {
@@ -14,7 +15,5 @@ namespace ek
             }
             return complementSum;
         }
-
-
     }
 }

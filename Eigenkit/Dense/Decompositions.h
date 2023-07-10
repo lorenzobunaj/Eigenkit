@@ -11,7 +11,7 @@
 #include "../src/Dense/Decompositions/LU/FullPivotLU.h"
 #include "../src/Dense/Decompositions/Cholesky/Cholesky.h"
 #include "../src/Dense/Decompositions/Cholesky/CholeskyRF.h"
-#include "../src/Dense/Decompositions/LU/LDU.h"
+#include "../src/Dense/Decompositions/LU/DU.h"
 #include "../src/Dense/Decompositions/QR/HouseholderQR.h"
 #include "../src/Dense/Decompositions/QR/ColPivotQR.h"
 #include "../src/Dense/Decompositions/QR/GivensQR.h"

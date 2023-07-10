@@ -1,5 +1,6 @@
 namespace ek
 {
+    // finds the transposed matrix
     template <typename T>
     Matrix<T> Matrix<T>::t()
     {

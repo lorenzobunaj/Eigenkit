@@ -5,8 +5,8 @@ namespace ek
     {
     private:
         std::vector<Matrix<T>> components;
-
-        std::vector<Matrix<T>> rcholeskize(Matrix<T> A)
+        // converts the constructor inputs to a vector of matrices
+        std::vector<Matrix<T>> rfcholeskize(Matrix<T> A)
         {
             Identity<T> id(A.rows());
             Matrix<T> L = id;
@@ -16,10 +16,10 @@ namespace ek
                 for (size_t i=j+1; i<D.rows(); i++) {
                     L(i,j) = D(i,j) / D(j,j);
                 }
-
+                // perform Gaussian Elimination on the j-th column
                 Elimination<T> M(D,j);
-                D = M * D;
-                D = D * M.t();
+                D = M*D;
+                D = D*(M.t());
             }
 
             return {L,D};
@@ -29,9 +29,10 @@ namespace ek
         Matrix<T> L;
         Matrix<T> D;
 
+        // special constructor
         CholeskyRF(Matrix<T> mtx)
         {
-            components = rcholeskize(mtx);
+            components = rfcholeskize(mtx);
             A = mtx;
             L = components[0];
             D = components[1];

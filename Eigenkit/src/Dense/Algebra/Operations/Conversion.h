@@ -1,5 +1,6 @@
 namespace ek
 {
+    // squared -> matrix
     template <typename T>
     void Squared<T>::operator = (Matrix<T> mtx)
     {
@@ -13,7 +14,7 @@ namespace ek
             *e = *(it++);
         }
     }
-
+    // diagonal -> matrix
     template <typename T>
     void Diagonal<T>::operator = (Matrix<T> mtx)
     {
@@ -26,7 +27,7 @@ namespace ek
             (*this)(i,i) = mtx(i,i);
         }
     }
-
+    // binary -> matrix
     template <typename T>
     void Binary<T>::operator = (Matrix<T> mtx)
     {
@@ -40,7 +41,7 @@ namespace ek
             *e = *(it++);
         }
     }
-
+    // vector -> matrix
     template <typename T>
     void Vector<T>::operator = (Matrix<T> mtx)
     {

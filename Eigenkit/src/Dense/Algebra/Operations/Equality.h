@@ -1,5 +1,6 @@
 namespace ek
 {
+    // overloaded equality operators
     template <typename T>
     bool Matrix<T>::operator == (Matrix<T> mtx)
     {

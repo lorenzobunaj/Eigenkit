@@ -1,5 +1,6 @@
 namespace ek
 {
+    // find the Lp norm of a vector
     template <typename T>
     T Vector<T>::norm(T p)
     {

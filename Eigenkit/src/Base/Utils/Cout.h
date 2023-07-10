@@ -1,5 +1,6 @@
 namespace ek
 {
+    // overloaded the std::cout function
     template <typename T>
     std::ostream& operator << (std::ostream& os, Matrix<T> mtx)
     {

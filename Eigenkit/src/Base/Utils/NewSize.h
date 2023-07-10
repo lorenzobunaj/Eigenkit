@@ -1,5 +1,6 @@
 namespace ek
 {
+    // resize the matrix (if it's dynamic)
     template <typename T>
     void Matrix<T>::newSize(size_t r, size_t c)
     {
@@ -17,7 +18,7 @@ namespace ek
             (*r).resize(nc);
         }
     }
-
+    // find the (i,j)-th element
     template <typename T>
     T& Matrix<T>::operator () (size_t ir, size_t ic)
     {

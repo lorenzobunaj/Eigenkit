@@ -1,5 +1,6 @@
 namespace ek
 {
+    // find the mean element
     template <typename T>
     T Matrix<T>::mean()
     {

@@ -70,7 +70,7 @@ namespace ek {
         Vector<T> operator - (T scl);
         Vector<T> operator * (T scl);
 
-        // overload t function
+        // overload t and c functions
         // change row parameter
         Vector<T> t()
         {
@@ -97,18 +97,19 @@ namespace ek {
 
         size_t maxPos();
         size_t minPos();
+        size_t absMaxPos();
+        size_t absMinPos();
         // implement products
         T dot(Vector<T>);
         Vector<T> cross(Vector<T>);
         Matrix<T> outer(Vector<T>);
-
-        T norm(T);
-
         Vector<T> proj(Vector<T> op2)
         {
             Vector<T> op1 = *this;
 
             return op2 * (op1.dot(op2.t())/op2.dot(op2.t()));
         }
+        // find the Lp-norm
+        T norm(T);
     };
 }
