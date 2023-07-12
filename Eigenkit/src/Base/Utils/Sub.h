@@ -5,8 +5,10 @@ namespace ek
     Matrix<T> Matrix<T>::sub(size_t ir, size_t ic, size_t fr, size_t fc)
     {
         // check if the coordinates are valid
-        if (!(subBorderCheck(*this, ir, ic, fr, fc))) {throw std::invalid_argument("Invalid Argument");}
-        // initialize the output matrix and add the entries
+        if (!(subBorderCheck(*this, ir, ic, fr, fc))) {
+            //throw std::invalid_argument("Invalid Argument");
+        }
+
         Matrix<T> out(fr-ir+1, fc-ic+1);
         for (size_t i=0; i<out.rows(); i++) {
             for (size_t j=0; j<out.cols(); j++) {
@@ -16,7 +18,7 @@ namespace ek
 
         return out;
     }
-    /*
+
     template <typename T>
     Matrix<T> Matrix<T>::sub(size_t ir, size_t ic)
     {
@@ -34,7 +36,7 @@ namespace ek
         }
 
         return out;
-    }*/
+    }
     // returns r-th row
     template <typename T>
     Matrix<T> Matrix<T>::row(size_t r)

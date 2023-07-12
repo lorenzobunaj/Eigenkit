@@ -8,11 +8,14 @@ namespace ek
         // converts the constructor inputs to a vector of matrices
         std::vector<Matrix<T>> eliminize(Matrix<T> A)
         {
+            // range where algorithm can be performed
+            T range = std::min(A.rows(), A.cols());
+
             Identity<T> id(A.rows());
             Matrix<T> U = A;
             Matrix<T> Li = id;
 
-            for (size_t j=0; j<U.cols()-1; j++) {
+            for (size_t j=0; j<range-1; j++) {
                 // perform Gaussian Elimination on the j-th column
                 Elimination<T> M(U,j);
                 U = M*U;

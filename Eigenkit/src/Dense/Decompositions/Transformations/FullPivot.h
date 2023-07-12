@@ -14,13 +14,13 @@ namespace ek
             return A;
         }
         // converts the constructor inputs to an array
-        std::vector<Matrix<T>> fullpivize(Matrix<T> A, size_t j, Matrix<T> indices)
+        std::vector<Matrix<T>> fullpivize(Matrix<T> A, Matrix<T> indRow, Matrix<T> indCol, size_t j)
         {
             // find pmax : pmax = argmax(A(x,y))
             std::vector<size_t> pmax = A.sub(j,j,A.rows()-1,A.cols()-1).absMaxPos();
             // initialize permutation matrices M : MA swaps rows and AM swap columns
-            Permutation<T> P(indSwap(indices, j, pmax[0]+j));
-            Permutation<T> Q(indSwap(indices, j, pmax[1]+j));
+            Permutation<T> P(indSwap(indRow, j, pmax[0]+j));
+            Permutation<T> Q(indSwap(indCol, j, pmax[1]+j));
 
             std::vector<Matrix<T>> out = {P,Q};
             return out;
@@ -30,9 +30,9 @@ namespace ek
         Matrix<T> Q;
 
         // special constructor
-        FullPivot(Matrix<T> A, size_t j, Matrix<T> indices)
+        FullPivot(Matrix<T> A, Matrix<T> indRow, Matrix<T> indCol, size_t j)
         {
-            std::vector<Matrix<T>> components = fullpivize(A, j, indices);
+            std::vector<Matrix<T>> components = fullpivize(A, indRow, indCol, j);
             P = components[0];
             Q = components[1];
         }

@@ -8,10 +8,13 @@ namespace ek
         // converts the constructor inputs to a vector of matrices
         std::vector<Matrix<T>> duize(Matrix<T> A)
         {
+            // range where algorithm can be performed
+            T range = std::min(A.rows(), A.cols());
+
             Matrix<T> U = A;
             Matrix<T> D(A.rows(), A.cols());
 
-            for (size_t i=0; i<A.cols(); i++) {
+            for (size_t i=0; i<range; i++) {
                 // insert A's diagonal elements in D's diagonal
                 D(i,i) = A(i,i);
                 // divide A's elements by the diagonal ones

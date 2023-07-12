@@ -17,8 +17,8 @@ namespace ek
         std::vector<std::vector<T>> partialpivize(Matrix<T> A, Matrix<T> indices, size_t j)
         {
             std::vector<std::vector<T>> out;
-            // find imax : jmax = argmax(A(i,j))
-            size_t imax = j + A.col(j).absMaxPos()[0];
+            // find imax : imax = argmax(A(i,j))
+            size_t imax = j + A.col(0).absMaxPos()[0];
             // initialize permutation matrix P : PA swaps rows and AP swap columns
             Permutation<T> P(indSwap(indices,imax,j));
 
