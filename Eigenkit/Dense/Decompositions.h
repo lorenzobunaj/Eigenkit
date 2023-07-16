@@ -6,8 +6,7 @@
 #include "../src/Dense/Decompositions/Transformations/Householder.h"
 #include "../src/Dense/Decompositions/Transformations/Givens.h"
 #include "../src/Dense/Decompositions/Transformations/Gram.h"
+
 #include "../src/Dense/Decompositions/LU/LU.h"
 #include "../src/Dense/Decompositions/Cholesky/Cholesky.h"
 #include "../src/Dense/Decompositions/QR/QR.h"
-#include "../src/Dense/Decompositions/SVD/JacobiSVD.h"
-#include "../src/Dense/Decompositions/SVD/DCSVD.h"

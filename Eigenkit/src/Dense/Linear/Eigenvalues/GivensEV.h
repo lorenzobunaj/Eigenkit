@@ -1,6 +1,0 @@
-#ifndef GIVENSEV_H_INCLUDED
-#define GIVENSEV_H_INCLUDED
-
-
-
-#endif // GIVENSEV_H_INCLUDED

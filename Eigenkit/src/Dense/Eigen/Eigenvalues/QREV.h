@@ -1,7 +1,7 @@
 namespace ek
 {
     template <typename T>
-    std::vector<T> Eigen<T>::EQR(std::string dec, size_t n, T e)
+    std::vector<T> Eigen<T>::QREV(std::string dec, size_t n, T e)
     {
         // check if the chosen decomposition exists
         if (dec != "householder" && dec != "givens") {

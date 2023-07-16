@@ -50,10 +50,10 @@ namespace ek
         std::vector<T> Jacobi(size_t, T);
 
         // finds the eigenvalues with QR method
-        std::vector<T> QRE(std::string, size_t, T);
+        std::vector<T> QREV(std::string, size_t, T);
     };
 }
 
 #include "./Dominant.h"
 #include "./Jacobi.h"
-#include "./QR.h"
+#include "./QREV.h"

@@ -1,6 +1,0 @@
-#ifndef FULLRANK_H_INCLUDED
-#define FULLRANK_H_INCLUDED
-
-
-
-#endif // FULLRANK_H_INCLUDED
