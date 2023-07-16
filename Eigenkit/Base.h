@@ -1,10 +1,12 @@
 #include <vector>
 #include <complex>
+#include <cmath>
 #include <typeinfo>
 #include <algorithm>
 #include <iterator>
 #include <cstddef>
 #include <iostream>
+#include <string>
 
 #include "src/Base/Base/Matrix.h"
 #include "src/Base/Base/Constructors.h"
@@ -21,3 +23,4 @@
 #include "src/Base/Types/Permutation.h"
 #include "src/Base/Types/Identity.h"
 #include "src/Base/Types/Binary.h"
+#include "src/Base/Types/Index.h"

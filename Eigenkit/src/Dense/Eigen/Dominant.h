@@ -1,10 +1,12 @@
 namespace ek
 {
+    // finds if the Power method converged
     template <typename T>
-    bool conv(Matrix<T> p, Matrix<T> s, size_t k)
+    bool domConv(Matrix<T> p, Matrix<T> s, T e)
     {
+        // compare xn - x(n-1) to 10^(-k)
         for (size_t i=0; i<p.rows()-1; i++) {
-            if (std::abs(p(i,0)-s(i,0)) > 1/std::pow(10,k)) {
+            if (std::abs(p(i,0)-s(i,0)) > e) {
                 return 0;
             }
         }
@@ -12,41 +14,35 @@ namespace ek
         return 1;
     }
 
+    // performs the Power method
     template <typename T>
-    T Rayleigh(Matrix<T> A, Matrix<T> x)
+    T Eigen<T>::Dominant(size_t n, T e)
     {
-        Vector<T> op1;
-        Vector<T> op2;
-
-        op1 = A*x;
-        op2 = x;
-
-        return (op1.dot(op2))/(op2.dot(op2));
-    }
-
-    template <typename T>
-    T PowerEV(Matrix<T> A, size_t k, size_t n)
-    {
+        // initialize the container of the latest two results
         std::vector<T> vn;
         vn.resize(2);
 
+        // initialize x(0), x(n-1), x(n)
         Matrix<T> x(A.cols(),1);
         for (size_t i = 0; i<x.rows(); i++) {
             x(i,0) = 1;
         }
-
         Matrix<T> p;
         Matrix<T> s;
+
+        // perform Power algorithm
         size_t i=0;
         do {
+            // initialize x(n-1) and x(n)
             p = x;
             s = A*x;
 
+            // find the 2 new values
             s = s/s(s.rows()-1,0);
             x = s;
 
             i++;
-        } while (!conv(p,s,k) && i<n);
+        } while (!domConv(p,s,e) && i<n);
 
         return Rayleigh(A,x);
     }

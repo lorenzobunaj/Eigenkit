@@ -106,11 +106,13 @@ namespace ek
     template <typename T>
     Matrix<T> Vector<T>::outer (Vector<T> vec)
     {
-        if ((*this).cols() != 1 || vec.cols() != 1) {
-            throw std::invalid_argument("Invalid Arguments");
-        }
+        Matrix<T> out((*this).dim(), vec.dim());
 
-        Matrix<T> out = *this * vec.t();
+        for (size_t i=0; i<(*this).dim(); i++) {
+            for (size_t j=0; j<vec.dim(); j++) {
+                out(i,j) = (*this)(i) * vec(j);
+            }
+        }
 
         return out;
     }

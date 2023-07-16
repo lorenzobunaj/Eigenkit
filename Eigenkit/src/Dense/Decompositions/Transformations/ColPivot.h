@@ -17,9 +17,11 @@ namespace ek
         std::vector<std::vector<T>> colpivize(Matrix<T> A, Matrix<T> indices)
         {
             std::vector<std::vector<T>> out;
+
             size_t jmax=0;
-            T norm=0;
-            for (size_t j=1;j<A.cols();j++) {
+            T norm =0;
+
+            for (size_t j=0;j<A.cols();j++) {
                 // initialize vector v : v = j-th A's column
                 Vector<T> v;
                 v = A.col(j);

@@ -1,7 +1,7 @@
  namespace ek
 {
     template <typename T>
-    class Gram : public Transformation<T>
+    class Gram : public Matrix<T> //: public Transformation<T>
     {
     private:
         // converts the constructor inputs to an array
@@ -14,15 +14,15 @@
 
             for (size_t i=0; i<A.cols(); i++) {
                 out[i].resize(A.rows());
+                // let a = i-th A's column
                 Vector<T> a = arr[i];
-                // let r = a;
                 Vector<T> r = a;
                 // scroll through the previous r out(j);
                 for (size_t j=0; j<i; j++) {
-                    // let u = out(j) and e = u/|u|
+                    // let u = out(j) and e = u/||u||
                     Vector<T> u = out[j];
                     Vector<T> e;
-                    e = u/u.norm(2);
+                    e = u/(u.norm(2));
                     // r = a - e(0)*(a.dot(e(0))) - ... - e(i-1)*(a.dot(e(i-1)))
                     r = r - e*(a.dot(e));
                 }
@@ -34,6 +34,6 @@
         }
     public:
         // special constructor
-        Gram(Matrix<T> mtx) : Transformation<T>(gramize(mtx)){};
+        Gram(Matrix<T> mtx) : Matrix<T>(gramize(mtx)){};
     };
 }

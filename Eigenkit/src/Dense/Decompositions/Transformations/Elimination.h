@@ -12,7 +12,7 @@ namespace ek
             Matrix<T> out = id;
             // assign out(i,j) values : out*A performs Gaussian Elimination to A
             for (size_t i=j+1; i<A.rows(); i++) {
-                out(i,j) = -A(i,j) * 1/A(j,j);
+                out(i,j) = -A(i,j) * (T)1/A(j,j);
             }
 
             return out.mtx();
