@@ -52,6 +52,8 @@ namespace ek
 
         // QR Decomposition with Gram-Schmidt method
         void GS();
+
+        Vector<T> solve(Vector<T>);
     };
 }
 

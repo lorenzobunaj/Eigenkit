@@ -1,7 +1,7 @@
 namespace ek
 {
     template <typename T>
-    void LU<T>::GE()
+    void LU<T>::Gauss()
     {
         init();
 
@@ -14,6 +14,6 @@ namespace ek
 
         // calculate matrix L
         L = Li.inverse();
-        state = "ge";
+        state = 1;
     }
 }

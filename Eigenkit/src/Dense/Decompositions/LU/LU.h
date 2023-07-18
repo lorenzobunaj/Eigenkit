@@ -4,7 +4,7 @@ namespace ek
     class LU
     {
     private:
-        std::string state = "";
+        int state;
         bool ld = 0;
         bool du = 0;
 
@@ -43,7 +43,7 @@ namespace ek
         };
 
         // LU Decomposition with Gaussian Elimination
-        void GE();
+        void Gauss();
 
         // LU Decomposition with Partial Pivoting
         void PP();
@@ -56,10 +56,12 @@ namespace ek
 
         // LU' -> LDU
         void DU();
+
+        Vector<T> solve(Vector<T>);
     };
 }
 
-#include "./GE.h"
+#include "./Gauss.h"
 #include "./PP.h"
 #include "./FP.h"
 #include "./LD.h"

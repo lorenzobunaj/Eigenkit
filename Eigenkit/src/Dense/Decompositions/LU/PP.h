@@ -21,7 +21,7 @@ namespace ek
             PartialPivot<T> Pj(Uj, ind, j);
             U = Pj*U;
             P = Pj*P;
-            Li = P*Li;
+            Li = Pj*Li;
 
             // perform Gaussian Elimination on the j-th column
             Elimination<T> E(U,j);
@@ -31,6 +31,6 @@ namespace ek
 
         // calculate matrix L
         L = P*Li.inverse();
-        state = "pp";
+        state = 2;
     }
 }
