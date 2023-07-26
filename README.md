@@ -40,10 +40,12 @@ int main()
     ek::Matrix<int> mtx(2,2);
     mtx(0,0) = 1;
     std::cout << mtx(0,0);
+
+    return 0;
 }
 ```
 
-Output:
+Terminal:
 
 ```cpp
 1
