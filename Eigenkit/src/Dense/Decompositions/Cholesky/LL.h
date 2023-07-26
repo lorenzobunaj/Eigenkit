@@ -15,7 +15,7 @@ namespace ek
         // sum elements over a column
         T out = 0;
         for (size_t k=0; k<e; k++) {
-            out += A(i,k)*std::conj(A(j,k));
+            out += A(i,k)*conj(A(j,k));
         }
 
         return out;
