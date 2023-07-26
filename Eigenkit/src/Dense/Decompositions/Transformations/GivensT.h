@@ -1,7 +1,7 @@
 namespace ek
 {
     template <typename T>
-    class Givens : public Transformation<T>
+    class GivensT : public Transformation<T>
     {
     private:
         // converts the constructor inputs to an array
@@ -18,8 +18,9 @@ namespace ek
 
             return out;
         }
+
     public:
         // special constructor
-        Givens(size_t d, size_t p1, size_t p2, T c, T s) : Transformation<T>(givensize(d,p1,p2,c,s)){};
+        GivensT(size_t d, size_t p1, size_t p2, T c, T s) : Transformation<T>(givensize(d, p1, p2, c, s)){};
     };
 }

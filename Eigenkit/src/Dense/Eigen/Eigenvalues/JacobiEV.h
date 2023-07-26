@@ -21,7 +21,7 @@ namespace ek
 
     // performs the Jacobi algorithm
     template <typename T>
-    std::vector<T> Eigen<T>::Jacobi(size_t n, T e)
+    std::vector<T> Eigen<T>::JacobiEV(size_t n, T e)
     {
         // initialize the eigenvalues container
         std::vector<T> ev;
@@ -47,7 +47,7 @@ namespace ek
                         // initialize c, s : c = cos(t), s = sin(t) for a given rotation angle t
                         T c = A(j,j)/r;
                         T s = -A(i,j)/r;
-                        Givens<T> G(A.rows(), i, j, c, s);
+                        GivensT<T> G(A.rows(), i, j, c, s);
 
                         A =   G.t() * A * G;
                         /*f=1*/

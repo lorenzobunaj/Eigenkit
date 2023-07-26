@@ -24,7 +24,7 @@ namespace ek
             // prepare the vector v for the Householder transformation
             a = M.col(0);
             e.newSize(M.rows());
-            v = a + (a(0)/std::abs(a(0)))* a.norm(2)*e;
+            v = a + (a(0) / std::abs(a(0))) * a.norm(2) * e;
 
             return v;
         }
@@ -42,22 +42,22 @@ namespace ek
         };
 
         // QR Decomposition with Householder reflections
-        void HR();
+        void Householder();
 
         // QR Decomposition with Column Pivoting
         void CP();
 
         // QR Decomposition with Givens rotations
-        void GR();
+        void Givens();
 
         // QR Decomposition with Gram-Schmidt method
-        void GS();
+        void Gram();
 
         Vector<T> solve(Vector<T>);
     };
 }
 
-#include "./HR.h"
+#include "./Householder.h"
 #include "./CP.h"
-#include "./GR.h"
-#include "./GS.h"
+#include "./Givens.h"
+#include "./Gram.h"

@@ -47,7 +47,7 @@ namespace ek
         T Dominant(size_t, T);
 
         // finds the eigenvalues with Jacobi method
-        std::vector<T> Jacobi(size_t, T);
+        std::vector<T> JacobiEV(size_t, T);
 
         // finds the eigenvalues with QR method
         std::vector<T> QREV(std::string, size_t, T);
@@ -55,5 +55,5 @@ namespace ek
 }
 
 #include "./Dominant.h"
-#include "./Jacobi.h"
+#include "./JacobiEV.h"
 #include "./QREV.h"

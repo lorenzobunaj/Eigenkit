@@ -1,7 +1,7 @@
 namespace ek
 {
     template <typename T>
-    void QR<T>::GS()
+    void QR<T>::Gram()
     {
         // initialize class matrices
         // letter "t" near the matrix name means "temporary"
@@ -11,11 +11,13 @@ namespace ek
         P = idr;
         Q = Qt;
         R = Rt;
-        Gram<T> G(A);
+        GramT<T> G(A);
 
-        for (size_t j=0; j<A.cols(); j++) {
+        for (size_t j = 0; j < A.cols(); j++)
+        {
             // check if the L2 norm will be 0
-            if (G.row(j).absMax() == 0) {
+            if (G.row(j).absMax() == 0)
+            {
                 throw std::invalid_argument("Invalid Decomposition");
             }
 
@@ -25,21 +27,23 @@ namespace ek
             T n = r.norm(2);
 
             // Q[:][j] = G[j][:] / n
-            for (size_t i=0; i<A.rows(); i++) {
-                Q(i,j) = G(j,i)/n;
+            for (size_t i = 0; i < A.rows(); i++)
+            {
+                Q(i, j) = G(j, i) / n;
             }
         }
 
         Vector<T> op1;
         Vector<T> op2;
         // R(i,j) = 0 if i > j else A[:][j] * Q[:][i]
-        for (size_t i=0; i<A.rows(); i++) {
-            for (size_t j=i; j<A.cols(); j++) {
+        for (size_t i = 0; i < A.rows(); i++)
+        {
+            for (size_t j = i; j < A.cols(); j++)
+            {
                 op1 = A.col(j);
                 op2 = Q.col(i);
-                R(i,j) = op1.dot(op2);
+                R(i, j) = op1.dot(op2);
             }
         }
     }
 }
-

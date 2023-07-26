@@ -3,4 +3,6 @@ obj
 *.depend
 *.layout
 *.cbp
-main.cpp
+.DS_Store
+.vscode
+test
