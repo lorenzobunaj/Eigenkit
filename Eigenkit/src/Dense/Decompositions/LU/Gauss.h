@@ -5,11 +5,12 @@ namespace ek
     {
         init();
 
-        for (size_t j=0; j<range()-1; j++) {
+        for (size_t j = 0; j < range() - 1; j++)
+        {
             // perform Gaussian Elimination on the j-th column
-            Elimination<T> E(U,j);
-            U = E*U;
-            Li = E*Li;
+            GaussT<T> E(U, j);
+            U = E * U;
+            Li = E * Li;
         }
 
         // calculate matrix L
