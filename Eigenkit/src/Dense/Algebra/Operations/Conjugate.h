@@ -22,14 +22,7 @@ namespace ek
         auto e = (*this).begin();
         for (auto it = out.begin(); it != out.end(); it++)
         {
-            if (isComplex<T>())
-            {
-                *it = std::conj(*(e++));
-            }
-            else
-            {
-                *it = *(e++);
-            }
+            *it = std::conj(*(e++));
         }
 
         return out;
