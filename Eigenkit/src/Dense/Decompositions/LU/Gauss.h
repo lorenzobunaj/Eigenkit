@@ -15,6 +15,5 @@ namespace ek
 
         // calculate matrix L
         L = Li.inverse();
-        state = 1;
     }
 }

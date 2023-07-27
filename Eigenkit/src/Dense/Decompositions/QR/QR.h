@@ -4,8 +4,6 @@ namespace ek
     class QR
     {
     private:
-        std::string state = "";
-
         // returns range where decompositions can be performed
         T range()
         {
