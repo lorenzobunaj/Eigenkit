@@ -6,7 +6,7 @@ namespace ek
         Vector<T> y;
         Vector<T> x;
 
-        y = forSub(L, a);
+        y = forSub(L*D, a);
         x = backSub(L.h(), y);
 
         return x;
