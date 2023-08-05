@@ -6,7 +6,7 @@ namespace ek
         init();
 
         // initialize index matrix
-        Index<T> ind(A.rows());
+        Index<T> indr(A.rows());
 
         for (size_t j = 0; j < range() - 1; j++)
         {
@@ -20,7 +20,7 @@ namespace ek
             // perform Partial Pivoting on the j-th column
             // letter "j" near the matrix name means "j-th"
             Matrix<T> Uj = U.sub(j, j, U.rows() - 1, U.cols() - 1);
-            PPT<T> Pj(Uj, ind, j);
+            PPT<T> Pj(Uj, indr, j);
             U = Pj * U;
             P = Pj * P;
             Li = Pj * Li;
@@ -33,6 +33,5 @@ namespace ek
 
         // calculate matrix L
         L = P * Li.inverse();
-        state = 2;
     }
 }

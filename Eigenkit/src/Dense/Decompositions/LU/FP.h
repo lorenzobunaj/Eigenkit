@@ -32,6 +32,5 @@ namespace ek
         }
 
         L = P * (Li.inverse());
-        state = "fp";
     }
 }

@@ -12,7 +12,8 @@ namespace ek
         Cholesky(Matrix<T> M)
         {
             // check if the matrix is Hermitian
-            if (M != M.h()) {
+            if (M != M.h())
+            {
                 throw std::invalid_argument("Invalid Matrix");
             };
 
@@ -24,6 +25,8 @@ namespace ek
 
         // Cholesky Root Free Decomposition
         void LDL();
+
+        Vector<T> solve(Vector<T>);
     };
 }
 

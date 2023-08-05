@@ -4,7 +4,6 @@ namespace ek
     class LU
     {
     private:
-        int state;
         bool ld = 0;
         bool du = 0;
 

@@ -10,6 +10,7 @@ namespace ek
         b = Q.h()*temp;
 
         x = backSub(R,b).t();
-        return x;
+
+        return P*x;
     }
 }

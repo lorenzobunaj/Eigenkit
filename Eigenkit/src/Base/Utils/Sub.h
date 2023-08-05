@@ -6,7 +6,7 @@ namespace ek
     {
         // check if the coordinates are valid
         if (!(subBorderCheck(*this, ir, ic, fr, fc))) {
-            throw std::invalid_argument("Invalid Argument");
+            throw std::invalid_argument("Invalid Argumenta");
         }
 
         Matrix<T> out(fr-ir+1, fc-ic+1);

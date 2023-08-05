@@ -16,6 +16,7 @@
 #include "src/Base/Utils/Reshape.h"
 #include "src/Base/Utils/Sub.h"
 #include "src/Base/Utils/Cout.h"
+#include "src/Base/Utils/IsComplex.h"
 #include "src/Base/Types/Vector.h"
 #include "src/Base/Types/Ones.h"
 #include "src/Base/Types/Squared.h"
