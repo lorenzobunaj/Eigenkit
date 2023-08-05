@@ -26,7 +26,10 @@ namespace ek
     Matrix<T> operator * (Matrix<T> op1, Matrix<T> op2)
     {
         if ((op1.cols() != op2.rows())) {
-            throw std::invalid_argument("Invalid Arguments");
+            throw std::invalid_argument("Invalid Operands in the Product");
+            /*std::cout << op1 << std::endl;
+            std::cout << "..." << std::endl;
+            std::cout << op2 << std::endl;*/
         }
 
         Matrix<T> out(op1.rows(), op2.cols());
