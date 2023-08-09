@@ -16,15 +16,31 @@ int main()
         {0.6983,    0.7891,    0.4445,    0.2376,    0.1985}
     };
 
-    ek::Bidiag<double> bd1(m1);
-    bd1.GolubKahan();
-    std::cout << bd1.U << std::endl;
+    ek::Matrix<double> m2 = {
+        {1,0,0,0,2},
+        {0,0,3,0,0},
+        {0,0,0,0,0},
+        {0,4,0,0,0}
+    };
+
+    ek::Matrix<double> m3 = {
+        {3, 2, 2},
+        {2, 3, -2}
+    };
+
+
+    ek::Bidiag<double> lc1(m1);
+    ek::Vector<double> v1 = {1,4,27,6,3,2,5,3,32,6};
+    lc1.Lanczos(v1);
+
+    std::cout << lc1.U << std::endl;
     std::cout << "..." << std::endl;
-    std::cout << bd1.L << std::endl;
+    std::cout << lc1.L << std::endl;
     std::cout << "..." << std::endl;
-    std::cout << bd1.V << std::endl;
+    std::cout << lc1.V << std::endl;
     std::cout << "..." << std::endl;
-    std::cout << bd1.U*bd1.L*bd1.V.h() << std::endl;
+    std::cout << lc1.U*lc1.L*(lc1.V.t()) << std::endl;
+
 
     return 0;
 }
