@@ -3,7 +3,6 @@ namespace ek
     template <typename T>
     void UBV<T>::LanczosUBV(Vector<T> vec, T e)
     {
-        initLanczos();
         Vector<T> u;
         Vector<T> v;
         T a;

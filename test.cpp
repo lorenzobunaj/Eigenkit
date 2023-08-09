@@ -28,18 +28,25 @@ int main()
         {2, 3, -2}
     };
 
+    ek::Matrix<double> m4 = {
+        {1, 2, 3},
+        {4, 5, 6},
+        {7, 8, 9},
+        {10, 11, 12}
+    };
 
-    ek::UBV<double> lc1(m1);
-    ek::Vector<double> v1 = {1,4,27,6,3,2,5,3,32,6};
-    lc1.LanczosUBV(v1);
 
-    std::cout << lc1.U << std::endl;
+    ek::UBV<double> hs1(m4);
+    //ek::Vector<double> v1 = {1,4,27,6,3,2,5,3,32,6};
+    hs1.HouseholderUBV();
+
+    std::cout << hs1.U << std::endl;
     std::cout << "..." << std::endl;
-    std::cout << lc1.B << std::endl;
+    std::cout << hs1.B << std::endl;
     std::cout << "..." << std::endl;
-    std::cout << lc1.V << std::endl;
+    std::cout << hs1.V << std::endl;
     std::cout << "..." << std::endl;
-    std::cout << lc1.U*lc1.B*(lc1.V.t()) << std::endl;
+    std::cout << hs1.U*hs1.B*(hs1.V.t()) << std::endl;
 
 
     return 0;

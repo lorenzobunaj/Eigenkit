@@ -21,12 +21,10 @@ namespace ek
             return v;
         }
 
-        void initLanczos()
+        // returns range where decompositions can be performed
+        T range()
         {
-            Matrix<T> null;
-            U = null;
-            B = null;
-            V = null;
+            return std::min(A.rows(), A.cols());
         }
 
     public:

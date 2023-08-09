@@ -1,11 +1,11 @@
 namespace ek
 {
     template <typename T>
-    class Transformation : public Squared<T>
+    class Transformation : public Matrix<T>
     {
     public:
         // special constructor
-        Transformation(std::vector<std::vector<T>> arr) : Squared<T>(arr){};
+        Transformation(std::vector<std::vector<T>> arr) : Matrix<T>(arr){};
         // overload newSize function
         // break the inheritance
         void newSize(size_t s)
