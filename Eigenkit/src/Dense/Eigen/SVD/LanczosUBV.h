@@ -1,9 +1,9 @@
 namespace ek
 {
     template <typename T>
-    void Bidiag<T>::Lanczos(Vector<T> vec, T e)
+    void UBV<T>::LanczosUBV(Vector<T> vec, T e)
     {
-        init();
+        initLanczos();
         Vector<T> u;
         Vector<T> v;
         T a;
@@ -22,7 +22,7 @@ namespace ek
         {
             V(i,0) = v(i);
         }
-        L(0,0) = a;
+        B(0,0) = a;
 
         size_t j=1;
         do
@@ -46,15 +46,15 @@ namespace ek
                 V(i,j) = v(i);
             }
 
-            L(j,j) = a;
-            L(j,j-1) = b;
+            B(j,j) = a;
+            B(j,j-1) = b;
 
             j++;
         }
         while
         (
-            (L(j-1,j-1) > A.absMin()/std::pow(10,e)) &&
-            (L(j-1,j-2) > A.absMin()/std::pow(10,e))
+            (B(j-1,j-1) > A.absMin()/std::pow(10,e)) &&
+            (B(j-1,j-2) > A.absMin()/std::pow(10,e))
         );
     }
 }

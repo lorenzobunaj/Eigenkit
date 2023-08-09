@@ -1,9 +1,9 @@
 namespace ek
 {
     template <typename T>
-    void SVD<T>::GolubReinsch()
+    void SVD<T>::GolubSVD()
     {
-        Bidiag<T> UBV(A);
+        UBV<T> UBV(A);
         UBV.GolubKahan();
         U = UBV.U;
         S = UBV.B;

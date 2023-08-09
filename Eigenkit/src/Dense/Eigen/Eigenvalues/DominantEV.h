@@ -16,7 +16,7 @@ namespace ek
 
     // performs the Power method
     template <typename T>
-    T Eigen<T>::Dominant(size_t n, T e)
+    T Eigen<T>::DominantEV(size_t n, T e)
     {
         // initialize the container of the latest two results
         std::vector<T> vn;

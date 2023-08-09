@@ -1,7 +1,7 @@
 namespace ek
 {
     template <typename T>
-    class Bidiag
+    class UBV
     {
     private:
         // creates the vector v used in the Householder reflection
@@ -21,29 +21,33 @@ namespace ek
             return v;
         }
 
-        void init()
+        void initLanczos()
         {
             Matrix<T> null;
             U = null;
-            L = null;
+            B = null;
             V = null;
         }
 
     public:
         Matrix<T> A;
         Matrix<T> U;
-        Matrix<T> L;
+        Matrix<T> B;
         Matrix<T> V;
 
         // constructor
-        Bidiag(Matrix<T> M)
+        UBV(Matrix<T> M)
         {
             A = M;
         };
 
         // Bidiagonalization with Golub-Kahan-Lanczos method
-        void Lanczos(Vector<T> vec, T e=5);
+        void LanczosUBV(Vector<T> vec, T e=5);
+
+        // Bidiagonalization with Householder method
+        void HouseholderUBV();
     };
 }
 
-#include "./Lanczos.h"
+#include "./LanczosUBV.h"
+#include "./HouseholderUBV.h"

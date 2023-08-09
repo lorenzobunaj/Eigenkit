@@ -34,16 +34,16 @@ namespace ek
         };
 
         // SVD Decomposition with Golub-Reinsch method
-        void GolubReinsch();
+        void GolubSVD();
 
         // SVD Decomposition with Divide and Conquer method
-        void DC();
+        void DCSVD();
 
         // SVD Decomposition with Jacobi method
-        void Jacobi();
+        void JacobiSVD();
     };
 }
 
-#include "./GolubReinsch.h"
-#include "./DC.h"
-#include "./Jacobi.h"
+#include "./GolubSVD.h"
+#include "./DCSVD.h"
+#include "./JacobiSVD.h"

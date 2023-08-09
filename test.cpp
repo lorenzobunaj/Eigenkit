@@ -29,17 +29,17 @@ int main()
     };
 
 
-    ek::Bidiag<double> lc1(m1);
+    ek::UBV<double> lc1(m1);
     ek::Vector<double> v1 = {1,4,27,6,3,2,5,3,32,6};
-    lc1.Lanczos(v1);
+    lc1.LanczosUBV(v1);
 
     std::cout << lc1.U << std::endl;
     std::cout << "..." << std::endl;
-    std::cout << lc1.L << std::endl;
+    std::cout << lc1.B << std::endl;
     std::cout << "..." << std::endl;
     std::cout << lc1.V << std::endl;
     std::cout << "..." << std::endl;
-    std::cout << lc1.U*lc1.L*(lc1.V.t()) << std::endl;
+    std::cout << lc1.U*lc1.B*(lc1.V.t()) << std::endl;
 
 
     return 0;

@@ -44,7 +44,7 @@ namespace ek
         };
 
         // finds the dominant eigenvalue with Power method
-        T Dominant(size_t, T);
+        T DominantEV(size_t, T);
 
         // finds the eigenvalues with Jacobi method
         std::vector<T> JacobiEV(size_t, T);
@@ -54,6 +54,6 @@ namespace ek
     };
 }
 
-#include "./Dominant.h"
+#include "./DominantEV.h"
 #include "./JacobiEV.h"
 #include "./QREV.h"
