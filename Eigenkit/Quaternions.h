@@ -1,8 +1,0 @@
-#include "src/Quaternions/Quaternion/Quaternion.h"
-#include "src/Quaternions/Quaternion/Constructors.h"
-#include "src/Quaternions/Quaternion/QFunctions.h"
-#include "src/Quaternions/Algebra/Arithmetic.h"
-#include "src/Quaternions/Notations/Matrix.h"
-#include "src/Quaternions/Notations/Vector.h"
-#include "src/Quaternions/Transformations/Reflections.h"
-#include "src/Quaternions/Transformations/Rotations.h"

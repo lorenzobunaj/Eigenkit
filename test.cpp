@@ -35,10 +35,18 @@ int main()
         {10, 11, 12}
     };
 
+    ek::Matrix<double> m5 = {
+        {1, 1, 1},
+        {4, 3, -1},
+        {3, 5, 3}
+    };
 
+    ek::Vector<double> v1 = {1, 6, 4};
+    v1 = v1.t();
+
+    /*
     ek::UBV<double> hs1(m4);
-    //ek::Vector<double> v1 = {1,4,27,6,3,2,5,3,32,6};
-    hs1.HouseholderUBV();
+    hs1.Householder();
 
     std::cout << hs1.U << std::endl;
     std::cout << "..." << std::endl;
@@ -47,6 +55,9 @@ int main()
     std::cout << hs1.V << std::endl;
     std::cout << "..." << std::endl;
     std::cout << hs1.U*hs1.B*(hs1.V.t()) << std::endl;
+    */
+
+    std::cout << ek::solve(m5,v1,"lu","pp") << std::endl;
 
 
     return 0;

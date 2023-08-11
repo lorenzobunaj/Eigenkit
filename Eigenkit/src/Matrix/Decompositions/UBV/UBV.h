@@ -1,7 +1,7 @@
 namespace ek
 {
     template <typename T>
-    class SVD
+    class UBV
     {
     private:
         // creates the vector v used in the Householder reflection
@@ -21,29 +21,31 @@ namespace ek
             return v;
         }
 
+        // returns range where decompositions can be performed
+        T range()
+        {
+            return std::min(A.rows(), A.cols());
+        }
+
     public:
         Matrix<T> A;
         Matrix<T> U;
-        Matrix<T> S;
+        Matrix<T> B;
         Matrix<T> V;
 
         // constructor
-        SVD(Matrix<T> M)
+        UBV(Matrix<T> M)
         {
             A = M;
         };
 
-        // SVD Decomposition with Golub-Reinsch method
-        void GolubSVD();
+        // Bidiagonalization with Golub-Kahan-Lanczos method
+        void Lanczos(Vector<T> vec, T e=5);
 
-        // SVD Decomposition with Divide and Conquer method
-        void DCSVD();
-
-        // SVD Decomposition with Jacobi method
-        void JacobiSVD();
+        // Bidiagonalization with Householder method
+        void Householder();
     };
 }
 
-#include "./GolubSVD.h"
-#include "./DCSVD.h"
-#include "./JacobiSVD.h"
+#include "./LanczosUBV.h"
+#include "./HouseholderUBV.h"

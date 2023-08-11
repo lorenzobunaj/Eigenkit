@@ -5,12 +5,15 @@ namespace ek
     {
         Vector<T> b;
         Vector<T> x;
+        Vector<T> out;
 
         Matrix<T> temp = a;
         b = Q.h()*temp;
 
         x = backSub(R,b).t();
 
-        return P*x;
+        out = P*x;
+
+        return out;
     }
 }

@@ -1,7 +1,7 @@
 namespace ek
 {
     template <typename T>
-    void SVD<T>::GolubSVD()
+    void SVD<T>::Golub()
     {
         UBV<T> UBV(A);
         UBV.GolubKahan();
