@@ -1,10 +1,32 @@
 namespace ek
 {
     template <typename T>
-    Vector<T> autoDec(Matrix<T> A)
+    Vector<T> autoDec(Matrix<T> A, Vector<T> a)
     {
         Vector<T> out;
-        out = A.col(0);
+
+        if ((A == A.h()))
+        {
+            Cholesky<T> clDec(A);
+            clDec.LL();
+
+            out = clDec.solve(a);
+        }
+        else if (A.rows() == A.cols())
+        {
+            LU<T> luDec(A);
+            luDec.PP();
+
+            out = luDec.solve(a);
+        }
+        else if (A.rows() != A.cols())
+        {
+            QR<T> qrDec(A);
+            qrDec.CP();
+
+            out = qrDec.solve(a);
+        }
+
         return out;
     }
 
@@ -15,10 +37,9 @@ namespace ek
 
         if ((decName=="") || (decType==""))
         {
-            out = autoDec(A);
+            out = autoDec(A,a);
         }
-
-        if (decName == "lu")
+        else if (decName == "lu")
         {
             LU<T> luDec(A);
 

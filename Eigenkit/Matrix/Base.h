@@ -2,11 +2,14 @@
 #include "../src/Matrix/Base/Base/Constructors.h"
 #include "../src/Matrix/Base/Base/BaseFunctions.h"
 #include "../src/Matrix/Base/Base/Iterator.h"
+
+#include "../src/Matrix/Base/Checks/IsComplex.h"
+
 #include "../src/Matrix/Base/Utils/NewSize.h"
 #include "../src/Matrix/Base/Utils/Reshape.h"
 #include "../src/Matrix/Base/Utils/Sub.h"
 #include "../src/Matrix/Base/Utils/Cout.h"
-#include "../src/Matrix/Base/Utils/IsComplex.h"
+
 #include "../src/Matrix/Base/Types/Vector.h"
 #include "../src/Matrix/Base/Types/Ones.h"
 #include "../src/Matrix/Base/Types/Squared.h"

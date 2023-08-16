@@ -41,10 +41,29 @@ int main()
         {3, 5, 3}
     };
 
+    ek::Matrix<double> m6 = {
+        {2, 1, -5},
+        {1, 7, 4},
+        {-5, 4, 19}
+    };
+
+    ek::Matrix<double> m7 = {
+        {2, 1, 0, 1},
+        {1, 3, 0, 1},
+        {0, 0, 0, 0},
+        {1, 1, 0, 1}
+    };
+
+    ek::Matrix<double> m8 = {
+        {3, 2, 0},
+        {-1, 0, 0},
+        {0, 0, 1}
+    };
+
+    /*
     ek::Vector<double> v1 = {1, 6, 4};
     v1 = v1.t();
 
-    /*
     ek::UBV<double> hs1(m4);
     hs1.Householder();
 
@@ -57,7 +76,9 @@ int main()
     std::cout << hs1.U*hs1.B*(hs1.V.t()) << std::endl;
     */
 
-    std::cout << ek::solve(m5,v1,"lu","pp") << std::endl;
+    bool check = ek::isPosDef(m8, "sylvester");
+
+    std::cout << check << std::endl;
 
 
     return 0;
