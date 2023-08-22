@@ -60,6 +60,11 @@ int main()
         {0, 0, 1}
     };
 
+    ek::Matrix<double> m9 = {
+        {1, -1},
+        {-1, 4}
+    };
+
     /*
     ek::Vector<double> v1 = {1, 6, 4};
     v1 = v1.t();
@@ -76,7 +81,7 @@ int main()
     std::cout << hs1.U*hs1.B*(hs1.V.t()) << std::endl;
     */
 
-    bool check = ek::isPosDef(m8, "sylvester");
+    bool check = ek::isPosDef(m9, "sylvester");
 
     std::cout << check << std::endl;
 

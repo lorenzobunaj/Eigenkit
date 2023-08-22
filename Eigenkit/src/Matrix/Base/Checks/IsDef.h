@@ -11,87 +11,121 @@ namespace ek
     {
         if (method == "sylvester")
         {
-            return (sylvesterDef(M) == "positive");
+            return sylvesterDef(M, "positive");
         }
         else if (method == "eigen")
         {
-            return (eigenDef(M) == "positive");
+            return eigenDef(M, "positive");
         }
 
         throw std::invalid_argument("Invalid Method Name");
     }
+
+    template<typename T>
+    bool isNegDef(Matrix<T> M, std::string method)
+    {
+        if (method == "sylvester")
+        {
+            return sylvesterDef(M, "negative");
+        }
+        else if (method == "eigen")
+        {
+            return eigenDef(M, "negative");
+        }
+
+        throw std::invalid_argument("Invalid Method Name");
+    }
+
     template<typename T>
     bool isSemiposDef(Matrix<T> M, std::string method)
     {
         if (method == "sylvester")
         {
-            return (sylvesterDef(M) == "semipositive");
+            return sylvesterDef(M, "semipositive");
         }
         else if (method == "eigen")
         {
-            return (eigenDef(M) == "semipositive");
+            return eigenDef(M, "semipositive");
         }
 
         throw std::invalid_argument("Invalid Method Name");
     }
 
     template<typename T>
-    std::string sylvesterDef(Matrix<T> M)
+    bool isSeminegDef(Matrix<T> M, std::string method)
     {
-        bool semi = 0;
-        std::string car = "";
-
-        T minor = M.det();
-        if (minor > 0)
+        if (method == "sylvester")
         {
-            car = "positive";
+            return sylvesterDef(M, "seminegative");
         }
-        else if (minor < 0)
+        else if (method == "eigen")
         {
-            car = "negative";
+            return eigenDef(M, "seminegative");
         }
 
-        T prod;
-
-        for (size_t i=1; i<M.rows()-1; i++)
-        {
-            prod = minor * M.sub(0,0,M.rows()-i-1,M.cols()-i-1).det();
-            if (prod < 0)
-            {
-                return "indefinite";
-            }
-            else if (prod == 0 )
-            {
-                if (minor == 0) {minor = M.sub(0,0,M.rows()-i-1,M.cols()-i-1).det();}
-                semi = 1;
-            }
-            else if (prod > 0)
-            {
-                minor = M.sub(0,0,M.rows()-i-1,M.cols()-i-1).det();
-                if (minor > 0) {car = "positive";}
-                else if (minor < 0) {car = "negative";}
-            }
-        }
-
-        if (car == "")
-        {
-            return "indefinite";
-        }
-
-        if (semi)
-        {
-            car = "semi"+car;
-            return car;
-        }
-        else
-        {
-            return car;
-        }
+        throw std::invalid_argument("Invalid Method Name");
     }
 
     template<typename T>
-    std::string eigenDef(Matrix<T> M)
+    bool sylvesterDef(Matrix<T> M, std::string type)
     {
-        return "";
+        if (type == "positive")
+        {
+            for (size_t i=1; i<M.rows()-1; i++)
+            {
+                if (M.sub(0,0,M.rows()-i,M.cols()-i).det() <= 0)
+                {
+                    return 0;
+                }
+            }
+            return 1;
+        }
+        else if (type == "negative")
+        {
+            for (size_t i=1; i<M.rows()-1; i++)
+            {
+                if (std::pow(-1,i+1)*M.sub(0,0,M.rows()-i,M.cols()-i).det() <= 0)
+                {
+                    return 0;
+                }
+            }
+            return 1;
+        }
+        else if (type == "semipositive")
+        {
+            for (size_t i=1; i<M.rows(); i++)
+            {
+                for (size_t j=i; j<M.rows(); j++)
+                {
+                    if (M.sub(j-i,j-i,j,j).det() <= 0)
+                    {
+                        return 0;
+                    }
+                }
+            }
+            return 1;
+        }
+        else if (type == "seminegative")
+        {
+            for (size_t i=1; i<M.rows(); i++)
+            {
+                for (size_t j=i; j<M.rows(); j++)
+                {
+                    if (std::pow(-1,i+1)*M.sub(j-i,j-i,j,j).det() <= 0)
+                    {
+                        return 0;
+                    }
+                }
+            }
+            return 1;
+        }
+
+        throw std::invalid_argument("Invalid Type Name");
+    }
+
+    template<typename T>
+    bool eigenDef(Matrix<T> M, std::string type)
+    {
+        return 1;
     }
 }
